@@ -14,6 +14,8 @@ const FindMovieContainer = (props) => {
     const movieArr = useSelector(state => state.movie.movie)
         .sort((prev, next) => prev.year - next.year);
 
+    const imdbLink = "https://www.imdb.com/title/"
+
     const findMovie = () => {
         props.requestMovie(props.bodyInput)
     }
@@ -24,8 +26,9 @@ const FindMovieContainer = (props) => {
     return (
         <div>
             <TextField onChange={onChange} value={props.bodyInput}/>
-            <TableContainer sx={{maxWidth: 700, textAlign: "center", margin: "auto"}} component={Paper}>
-                <Table sx={{ minWidth: 700, maxWidth:700 }} aria-label="customized table">
+            <TableContainer sx={{maxWidth: 700, textAlign: "center", margin: "auto"}}
+                            component={Paper}>
+                <Table sx={{minWidth: 700, maxWidth: 700}} aria-label="customized table">
                     <TableHead>
                         <TableRow>
                             <TableCell align="right">Poster</TableCell>
@@ -36,9 +39,14 @@ const FindMovieContainer = (props) => {
                     </TableHead>
                     <TableBody>
                         {props.movie.map((row) => (
-                            <TableRow key={row.name}>
-                                <TableCell align="right">{row.poster && <img style={{height:80}} alt='poster movie' src={row.poster}/> || 'No photo'}</TableCell>
-                                <TableCell align="right">{row.title}</TableCell>
+                            <TableRow key={row.id}>
+                                <TableCell align="right">{row.poster &&
+                                    <img style={{height: 80}} alt='poster movie'
+                                         src={row.poster}/> || 'No photo'}</TableCell>
+                                <TableCell align="right">{
+                                    <a href={imdbLink + row.imdb_id + '/'}
+                                       target="_blank"
+                                       rel="noreferrer noopener">{row.title}</a>}</TableCell>
                                 <TableCell align="right">{row.year}</TableCell>
                                 {/*<TableCell align="right">{row.infoMovie}</TableCell>*/}
                             </TableRow>
