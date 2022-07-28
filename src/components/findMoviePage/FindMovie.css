@@ -7,3 +7,28 @@
 .logo{
     width: 50px;
 }
+
+
+.find_movie_control{
+    margin:15px auto;
+    width: 300px;
+}
+
+@media screen and (min-width: 0px) {
+    .grid_movie{
+        margin: auto;
+        max-width: 300px;
+    }
+}
+@media screen and (min-width: 630px) {
+    .grid_movie{
+        margin: auto;
+        max-width: 610px;
+    }
+}
+@media screen and (min-width: 1240px) {
+    .grid_movie{
+        margin: auto;
+        max-width: 1240px;
+    }
+}
