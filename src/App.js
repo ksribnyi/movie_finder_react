@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes} from "react-router-dom";
 import {Navigate} from "react-router";
 import HeaderContainer from "./components/HeaderContainer";
-import FindMovieContainer from "./components/FindMovieContainer";
+import FindMovieContainer from "./components/findMoviePage/FindMovieContainer";
 import './App.css';
 import Login from "./components/Login";
 import FavoriteMovie from "./components/FavoriteMovie";

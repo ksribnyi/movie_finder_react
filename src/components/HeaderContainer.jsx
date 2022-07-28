@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "./../asets/image/movies_logo.png"
-import "./FindMovie.css"
+import "./findMoviePage/FindMovie.css"
 import {useNavigate} from "react-router";
 import {NavLink} from "react-router-dom";
 
