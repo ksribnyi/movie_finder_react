@@ -10,9 +10,11 @@ const GridMovie = (props) => {
                   className={'grid_movie'}>
                 {props.movie.map((row) => (
                     <Grid key={row.id} item>
-                        <div style={{background: "gray", width: 280, height: 500, marginRight: 16}}>
+                        <div style={{background: "gray", width: 280, height: 500}}>
                             <div align="right">{row.poster ?
-                                <a href={imdbLink + row.imdb_id + '/'}>
+                                <a href={imdbLink + row.imdb_id + '/'}
+                                   target="_blank"
+                                   rel="noreferrer noopener">
                                     <img style={{width: 280, height: 450, textAlight: "center"}} alt='poster movie'
                                          src={row.poster}/>
                                 </a> : 'No photo'}</div>
