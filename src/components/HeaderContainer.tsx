@@ -1,28 +1,29 @@
 import React from "react";
-import logo from "./../asets/image/movies_logo.png"
 import "./findMoviePage/FindMovie.css"
 import {useNavigate} from "react-router";
 import {NavLink} from "react-router-dom";
 
-const HeaderContainer = () => {
+const logo = "/image/movies_logo.png"
+
+const HeaderContainer: React.FC = () => {
     const navigate = useNavigate()
     return (
         <div className={'header'}>
             <div>
                 <img className={'logo'} alt={"logo"} src={logo}/>
             </div>
-            <nav >
-                <div >
+            <nav>
+                <div>
                     <NavLink to={'/findmovie'}
-                             style={({isActive}) => ({
-                                 color: isActive ? '#186d74' : null,
-                                 fontWeight: isActive ? 'bold' : null
+                             style={({isActive}: { isActive: boolean }) => ({
+                                 color: isActive ? '#186d74' : '',
+                                 fontWeight: isActive ? 'bold' : ''
                              })}>Find movie</NavLink>
                 </div>
-                <div >
-                    <NavLink to='/favorite' style={({isActive}) => ({
-                        color: isActive ? '#186d74' : null,
-                        fontWeight: isActive ? 'bold' : null
+                <div>
+                    <NavLink to='/favorite' style={({isActive}: { isActive: boolean }) => ({
+                        color: isActive ? '#186d74' : '',
+                        fontWeight: isActive ? 'bold' : ''
                     })}>My favorite</NavLink>
                 </div>
             </nav>

@@ -1,19 +1,19 @@
 body{
-    background: gray;
-    margin: 0;
-    width: 100vw;
+  background: gray;
+  margin: 0;
+  width: 100vw;
 }
 
 .app-wrapper{
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 
 }
 
 .app-wrapper-content{
-    flex-grow: 3;
-    background: black;
+  flex-grow: 3;
+  background: black;
 }

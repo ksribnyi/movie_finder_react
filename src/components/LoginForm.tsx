@@ -3,6 +3,11 @@ import {Formik, Form, Field, ErrorMessage} from "formik";
 import * as Yup from "yup";
 import {Button} from "@material-ui/core";
 
+type InitValue = {
+    email: string,
+    password: string
+}
+
 const loginSchema = Yup.object().shape({
     password: Yup.string()
         .min(8, "Too Short!")
@@ -11,22 +16,19 @@ const loginSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Required")
 });
 
-const LoginForm = () => {
-    const handleSubmit = (values, {setSubmitting}) => {
-        setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-        }, 400);
-    };
-
-
+const LoginForm: React.FC = () => {
+    const initialValues: InitValue = {email: '', password: ''}
     return (
         <>
             <h1>Login</h1>
             <Formik
-                initialValues={{email: "", password: ""}}
+                initialValues={initialValues}
                 validationSchema={loginSchema}
-                onSubmit={handleSubmit}
+                onSubmit={(values, actions) => {
+                    console.log({values, actions});
+                    alert(JSON.stringify(values, null, 2));
+                    actions.setSubmitting(false);
+                }}
             >
                 {({isSubmitting}) => {
                     return (

@@ -1,6 +1,6 @@
 import React from "react";
 
-const FavoriteMovie = () => {
+const FavoriteMovie:React.FC = () => {
     return (
         <div>
             favorite
