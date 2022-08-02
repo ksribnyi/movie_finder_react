@@ -1,5 +1,5 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 import FindMovieContainer from "./components/findMoviePage/FindMovieContainer";
 import HeaderContainer from "./components/HeaderContainer";
 import FavoriteMovie from "./components/FavoriteMovie";

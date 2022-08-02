@@ -3,13 +3,13 @@ import {Formik, Form, Field, ErrorMessage} from "formik";
 import {Button} from "@material-ui/core";
 import loginSchema from "../utils/LoginForm.shema";
 
-type LoginValue = {
+type ILoginUser = {
     email: string,
     password: string
 }
 
 const LoginForm: React.FC = () => {
-    const initialValues: LoginValue = {email: "", password: ""}
+    const initialValues: ILoginUser = {email: "", password: ""}
     return (
         <>
             <h1>Login</h1>
@@ -17,7 +17,6 @@ const LoginForm: React.FC = () => {
                 initialValues={initialValues}
                 validationSchema={loginSchema}
                 onSubmit={(values, actions) => {
-                    console.log({values, actions});
                     alert(JSON.stringify(values, null, 2));
                     actions.setSubmitting(false);
                 }}

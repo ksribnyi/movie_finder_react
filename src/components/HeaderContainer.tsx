@@ -22,7 +22,7 @@ const HeaderContainer: React.FC = () => {
                 </div>
                 <div>
                     <NavLink to="/favorite" style={({isActive}: { isActive: boolean }) => ({
-                        color: isActive ? "#186d74" :" ''",
+                        color: isActive ? "#186d74" : "",
                         fontWeight: isActive ? "bold" : ""
                     })}>My favorite</NavLink>
                 </div>
