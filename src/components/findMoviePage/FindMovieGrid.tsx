@@ -2,10 +2,11 @@ import {Button, TextField} from "@mui/material";
 import React from "react";
 import GridMovie from "./GridMovie";
 import "./FindMovie.css"
+import {StateMovie} from "../../redux/FindMovieReducer";
 
 type FindMovieProps = {
     findMovie: React.MouseEventHandler,
-    movie: any[],
+    movie: Array<StateMovie>,
     onChange: React.ChangeEventHandler,
     bodyInput: string
 }

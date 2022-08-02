@@ -1,21 +1,28 @@
 import {MovieAPI} from "../api/api";
+import {AnyAction} from "redux";
 
 const SET_MOVIE = "SET_MOVIE"
 const SET_SEARCH_BODY = "SET_SEARCH_BODY"
 
-interface initialStateMovie {
+export interface StateMovie {
     id: number,
     title: string,
     imdb_id: string,
+    poster?: string,
     year: string,
 }
 
-let initialState = {
-    movie: [] as Array<initialStateMovie>,
-    newSearchBody: 'Shrek' as string
+type Search = {
+    movie?: Array<StateMovie>,
+    bodyInput?: string,
 }
 
-const FindMovieReducer = (state = initialState, action: any)=> {
+const initialState = {
+    movie: [],
+    bodyInput: ""
+}
+
+const FindMovieReducer = (state:Search = initialState, action:AnyAction)=> {
     switch (action.type) {
         case SET_MOVIE :
             return {
@@ -25,7 +32,7 @@ const FindMovieReducer = (state = initialState, action: any)=> {
         case SET_SEARCH_BODY :
             return {
                 ...state,
-                newSearchBody: action.body
+                bodyInput: action.body
             }
         default:
             return state
@@ -39,7 +46,6 @@ export const setSearchBody = (body: string) => ({type: SET_SEARCH_BODY, body})
 export const requestMovie = (name: string) => {
     return async (dispatch: any) => {
         let data:any = await MovieAPI.requestMovie(name)
-        console.log(data)
         dispatch(setMovie(data));
     }
 }

@@ -1,23 +1,15 @@
 import React from "react";
 import {Formik, Form, Field, ErrorMessage} from "formik";
-import * as Yup from "yup";
 import {Button} from "@material-ui/core";
+import loginSchema from "../utils/LoginForm.shema";
 
-type InitValue = {
+type LoginValue = {
     email: string,
     password: string
 }
 
-const loginSchema = Yup.object().shape({
-    password: Yup.string()
-        .min(8, "Too Short!")
-        .max(20, "Too Long!")
-        .required("Required"),
-    email: Yup.string().email("Invalid email").required("Required")
-});
-
 const LoginForm: React.FC = () => {
-    const initialValues: InitValue = {email: '', password: ''}
+    const initialValues: LoginValue = {email: "", password: ""}
     return (
         <>
             <h1>Login</h1>
