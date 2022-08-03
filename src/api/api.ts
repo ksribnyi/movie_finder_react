@@ -6,7 +6,7 @@ const instance = axios.create({
 })
 
 export const MovieAPI = {
-    requestMovie(name) {
+    requestMovie(name:string) {
         return instance.get(`${name}/`).then(response => response.data)
     }
 }
