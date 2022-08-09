@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {requestMovie, setSearchBody, StateMovie} from "../../redux/FindMovieReducer";
+import {requestMovie, setLoginStatus, setSearchBody, StateMovie} from "../../redux/FindMovieReducer";
 import FindMovieGrid from "./FindMovieGrid";
 
 type MovieContainer = {
@@ -29,4 +29,4 @@ const mapStateToProps = (state:MovieContainer) => ({
     movie: state.movie,
 })
 
-export default connect(mapStateToProps, {requestMovie, setSearchBody})(FindMovieContainer)
+export default connect(mapStateToProps, {requestMovie, setSearchBody, setLoginStatus})(FindMovieContainer)

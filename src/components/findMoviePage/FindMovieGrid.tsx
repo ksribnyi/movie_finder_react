@@ -26,8 +26,8 @@ type FindMovieProps = {
 
 const FindMovieGrid:React.FC<FindMovieProps> = ({findMovie, movie, onChange, bodyInput}) => {
     return (
-        <div>
-            <div className={"find_movie_control"}>
+        <div className={"find_movie_control"}>
+            <div className={"control"}>
                 <TextField variant={"outlined"} size={"small"} style={StyleFindMovieGrid.textInput}
                            autoComplete={"off"} onChange={onChange} value={bodyInput}/>
                 <Button style={StyleFindMovieGrid.btnInput}

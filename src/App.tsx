@@ -3,7 +3,8 @@ import "./App.css";
 import FindMovieContainer from "./components/findMoviePage/FindMovieContainer";
 import HeaderContainer from "./components/HeaderContainer";
 import FavoriteMovie from "./components/FavoriteMovie";
-import Login from "./components/Login";
+import LoginContainer from "./components/LoginPage/LoginContainer";
+import Registration from "./components/RegistrationPage/RegistrationForm"
 import {Navigate, Route, Routes} from "react-router";
 
 function App() {
@@ -15,10 +16,10 @@ function App() {
                     <Route path="/" element={<Navigate to={"/findmovie"}/>}/>
                     <Route path="/findmovie" element={<FindMovieContainer/>}/>
                     <Route path="/favorite " element={<FavoriteMovie/>}/>
-                    <Route path="/login" element={<Login/>}/>
+                    <Route path="/login" element={<LoginContainer/>}/>
+                    <Route path="/registration" element={<Registration/>}/>
                 </Routes>
             </div>
-
         </div>
     )
 }

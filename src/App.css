@@ -17,3 +17,7 @@ body{
   flex-grow: 3;
   background: black;
 }
+
+input:-webkit-autofill {
+  -webkit-box-shadow: inset 0 0 0 50px #808080; /* цвет вашего фона */
+}

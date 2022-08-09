@@ -1,21 +1,31 @@
 import {Grid} from "@mui/material";
 import React from "react";
-import "./FindMovie.css"
+import "./FindMovie.css";
 import {StateMovie} from "../../redux/FindMovieReducer";
 
 const StyleGridMovie = {
     movieBox: {
         background: "gray",
         width: 280,
-        height: 500
+        height: 500,
+        display: "flex",
+        flexDirection: "column" as "column",
+        justifyContent: "space-between"
     },
     imgPoster: {
         width: 280,
-        height: 450
+        height: "auto"
     },
     link: {
         textDecoration: "none",
-        wordWrap: "break-word" as "break-word"
+        color: "black",
+        wordWrap: "break-word" as "break-word",
+        fontWeight: "bold"
+    },
+    aboutMovie: {
+        fontSize: 18,
+        textAlign: "center" as "center",
+
     }
 }
 
@@ -40,12 +50,15 @@ const GridMovie = ({movie}: { movie: StateMovie[] }) => {
                                     <img style={StyleGridMovie.imgPoster} alt="poster movie"
                                          src={row.poster}/>
                                 </a> : "No photo"}</div>
-                            <div>{
-                                <a style={StyleGridMovie.link}
-                                   href={generateLink(row.imdb_id)}
-                                   target="_blank"
-                                   rel="noreferrer noopener">{row.title}</a>}</div>
-                            <div>{row.year}</div>
+                            <div style={StyleGridMovie.aboutMovie}>
+                                <div>{
+                                    <a style={StyleGridMovie.link}
+                                       href={generateLink(row.imdb_id)}
+                                       target="_blank"
+                                       rel="noreferrer noopener">{row.title}</a>}
+                                </div>
+                                <div>{row.year}</div>
+                            </div>
                         </div>
                     </Grid>
                 ))}
