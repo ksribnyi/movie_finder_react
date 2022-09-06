@@ -5,6 +5,7 @@ import App from "./App";
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import store from "./redux/redux-store";
+import {SnackbarProvider} from "notistack";
 
 
 const root = ReactDOM.createRoot(
@@ -14,9 +15,10 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <Provider store={store}>
-                <App/>
+                <SnackbarProvider autoHideDuration={3000} preventDuplicate variant={"error"} >
+                    <App/>
+                </SnackbarProvider>
             </Provider>
         </BrowserRouter>
     </React.StrictMode>
 );
-

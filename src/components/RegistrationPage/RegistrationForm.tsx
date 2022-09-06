@@ -3,7 +3,10 @@ import {useFormik} from "formik";
 import {TextField} from "@mui/material";
 import {Button} from "@material-ui/core";
 import registrationSchema from "../../utils/RegistrationForm.shema";
-
+import {AuthAPI} from "../../api/Auth/AuthAPI";
+import {useNavigate} from "react-router";
+import {useSnackbar} from "notistack";
+import {findmoviePatch} from "../../utils/variables";
 
 const StyleRegistrationForm = {
     RegBlock: {
@@ -13,7 +16,6 @@ const StyleRegistrationForm = {
         marginTop: 50,
         marginLeft: "auto",
         marginRight: "auto"
-
     },
     formBlock: {
         height: 280,
@@ -24,7 +26,6 @@ const StyleRegistrationForm = {
     },
     emailInput: {
         marginTop: 20,
-
     },
     passInput: {
         marginTop: 20
@@ -36,16 +37,21 @@ const StyleRegistrationForm = {
         margin: "auto",
         textAlign: "center" as "center"
     }
-
 }
 
 const RegistrationForm: React.FC = () => {
+    const navigate = useNavigate()
+    const {enqueueSnackbar} = useSnackbar()
     const formik = useFormik(
         {
-            initialValues: {email: "", password: "", confirmPassword: ""},
+            initialValues: {email: "", username: "", password: "", confirmPassword: ""},
             validationSchema: registrationSchema,
             onSubmit: (values, actions) => {
-                alert(JSON.stringify(values, null, 2));
+                AuthAPI.registration(values.email, values.username, values.password)
+                    .then(() => {navigate(findmoviePatch)})
+                    .catch((e) => {
+                    const keys = Object.keys(e.response.data)
+                    enqueueSnackbar(e.response.data[keys[0]])});
                 actions.setSubmitting(false);
             }
         }
@@ -66,6 +72,18 @@ const RegistrationForm: React.FC = () => {
                             onChange={formik.handleChange}
                             error={formik.touched.email && Boolean(formik.errors.email)}
                             helperText={formik.touched.email && formik.errors.email}/>
+                    </div>
+                    <div style={StyleRegistrationForm.emailInput}>
+                        <TextField
+                            id="username"
+                            type="username"
+                            name="username"
+                            label="User Name"
+                            variant="standard"
+                            value={formik.values.username}
+                            onChange={formik.handleChange}
+                            error={formik.touched.username && Boolean(formik.errors.username)}
+                            helperText={formik.touched.username && formik.errors.username}/>
                     </div>
                     <div style={StyleRegistrationForm.passInput}>
                         <TextField
@@ -98,13 +116,13 @@ const RegistrationForm: React.FC = () => {
                             Submit
                         </Button>
                     </div>
+                    <div>
+                        <p onClick={() => navigate("/login")}>Login</p>
+                    </div>
                 </div>
-
             </form>
-
         </div>
     );
-
 }
 
 export default RegistrationForm

@@ -1,30 +1,25 @@
-import {MovieAPI} from "../api/api";
-import {AnyAction} from "redux";
+import {FindMovieAPI} from "../api/FindMovie/FindMovieAPI";
+import {AnyAction, Dispatch} from "redux";
+import {responseMovie} from "../models/response/Response";
+import {AxiosResponse} from "axios";
 
 const SET_MOVIE = "SET_MOVIE"
 const SET_SEARCH_BODY = "SET_SEARCH_BODY"
-const SET_LOGIN_STATUS = "SET_LOGIN_STATUS"
 
-export interface StateMovie {
-    id: number,
-    title: string,
-    imdb_id: string,
-    poster?: string,
-    year: string,
-}
-
-type Search = {
-    movie?: Array<StateMovie>,
-    bodyInput?: string,
+export interface Search {
+    movie: responseMovie
+    bodyInput: string
 }
 
 const initialState = {
-    movie: [],
-    bodyInput: "",
-    loginStatus: false
+    movie: {
+        count: 0,
+        results: []
+    },
+    bodyInput: ""
 }
 
-const FindMovieReducer = (state:Search = initialState, action:AnyAction)=> {
+const FindMovieReducer = (state: Search = initialState, action: AnyAction) => {
     switch (action.type) {
         case SET_MOVIE :
             return {
@@ -36,25 +31,21 @@ const FindMovieReducer = (state:Search = initialState, action:AnyAction)=> {
                 ...state,
                 bodyInput: action.body
             }
-        case SET_LOGIN_STATUS :
-            return {
-                ...state,
-                loginStatus: action.status
-            }
         default:
             return state
     }
-
 }
 
-export const setMovie = (movie: string) => ({type: SET_MOVIE, movie})
+export const setMovie = (movie: AxiosResponse<responseMovie, responseMovie>) => ({type: SET_MOVIE, movie})
 export const setSearchBody = (body: string) => ({type: SET_SEARCH_BODY, body})
-export const setLoginStatus = (status: boolean) => ({type:SET_LOGIN_STATUS, status})
 
 export const requestMovie = (name: string) => {
-    return async (dispatch: any) => {
-        let data:any = await MovieAPI.requestMovie(name)
-        dispatch(setMovie(data));
+    return async (dispatch: Dispatch<AnyAction>) => {
+        await FindMovieAPI.requestMovie(name).then((data) => {
+                console.log('find movie', data)
+                dispatch(setMovie(data))
+            }
+        )
     }
 }
 

@@ -1,18 +1,10 @@
 import React from "react";
 import LoginForm from "./LoginForm";
 import {connect} from "react-redux";
-import {setLoginStatus} from "../../redux/FindMovieReducer";
-
-type LoginContainerType = {
-    movie: {
-        loginStatus: boolean
-    },
-    setLoginStatus: any
-}
+import {login} from "../../redux/AuthReducer";
 
 type LoginPropsType = {
-    status: boolean,
-    setLoginStatus: any
+    login: (email: string, password: string, navigate: (patch: string) => void) => Promise<void>
 }
 
 const StyleContainerLogin = {
@@ -23,21 +15,15 @@ const StyleContainerLogin = {
         marginTop: 50,
         marginLeft: "auto",
         marginRight: "auto"
-
     }
 }
 
-
-const LoginContainer = ({setLoginStatus}:LoginPropsType) => {
+const LoginContainer = ({login}: LoginPropsType) => {
     return (
         <div style={StyleContainerLogin.LogBlock}>
-            <LoginForm setLoginStatus={setLoginStatus}/>
+            <LoginForm login={login}/>
         </div>
     )
 }
 
-const mapStateToProps = (state: LoginContainerType) => ({
-    status: state.movie.loginStatus,
-})
-
-export default connect(mapStateToProps, {setLoginStatus})(LoginContainer);
+export default connect(null, {login})(LoginContainer);

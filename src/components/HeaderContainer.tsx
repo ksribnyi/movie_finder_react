@@ -3,27 +3,34 @@ import "./findMoviePage/FindMovie.css";
 import {useNavigate} from "react-router";
 import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
-import {setLoginStatus} from "../redux/FindMovieReducer";
+import {clearUserData, setLoginStatus,} from "../redux/AuthReducer";
+import {Button} from "@mui/material";
+import {findmoviePatch} from "../utils/variables";
 
 type HeaderPropsType = {
-    status: boolean,
-    setLoginStatus: any
+    loginStatus: boolean,
+    username?: string,
+    clearUserData: (email: null, username: null) => { type: string, email: null, username: null },
+    setLoginStatus: (status: boolean) => { type: string, status: boolean }
 }
-type HeaderContainerType = {
-    movie: {
-        loginStatus: boolean
-    },
-    setLoginStatus: any
+
+type AuthStatus = {
+    auth: {
+        loginStatus: boolean,
+        userData: {
+            username: string
+        }
+    }
 }
 
 const logo = "../assets/image/movies_logo.png"
 
-const HeaderContainer = ({status, setLoginStatus}: HeaderPropsType) => {
-    const logClick = (status:boolean) => {
-        setLoginStatus(status)
-        navigate("/login")
+const HeaderContainer = ({loginStatus, username, clearUserData, setLoginStatus}: HeaderPropsType) => {
+    const logClick = () => {
+        clearUserData(null, null)
+        localStorage.removeItem("token")
+        setLoginStatus(false)
     }
-
     const navigate = useNavigate()
     return (
         <div className={"header"}>
@@ -32,24 +39,24 @@ const HeaderContainer = ({status, setLoginStatus}: HeaderPropsType) => {
             </div>
             <nav className={"navigate"}>
                 <div>
-                    <NavLink to={"/findmovie"}
+                    <NavLink to={findmoviePatch}
                              style={({isActive}: { isActive: boolean }) => ({
                                  color: isActive ? "#186d74" : "",
                                  fontWeight: isActive ? "bold" : ""
                              })}>Find movie</NavLink>
                 </div>
-                <div>
+                {loginStatus && <div>
                     <NavLink to="/favorite" style={({isActive}: { isActive: boolean }) => ({
                         color: isActive ? "#186d74" : "",
                         fontWeight: isActive ? "bold" : ""
-                    })}>My favorite</NavLink>
-                </div>
+                    })}>Watch Later</NavLink>
+                </div>}
             </nav>
-            <div >
-                {
-                    status ? <p className={"LogIn"} onClick={() => logClick(false)}>Logout</p> :
-
-                        <p className={"LogIn"} onClick={() => logClick(false)}>Login</p>
+            {loginStatus && <div>{username}</div>}
+            <div>
+                {loginStatus ?
+                    <Button className={"LogIn"} onClick={() => logClick()}>Logout</Button> :
+                    <p className={"LogIn"} onClick={() => navigate("/login")}>login</p>
                 }
 
             </div>
@@ -57,8 +64,9 @@ const HeaderContainer = ({status, setLoginStatus}: HeaderPropsType) => {
     )
 }
 
-const mapStateToProps = (state: HeaderContainerType) => ({
-    status: state.movie.loginStatus,
+const mapStateToProps = (state: AuthStatus) => ({
+    loginStatus: state.auth.loginStatus,
+    username: state.auth.userData.username
 })
 
-export default connect(mapStateToProps, {setLoginStatus})(HeaderContainer)
+export default connect(mapStateToProps, {clearUserData, setLoginStatus})(HeaderContainer)

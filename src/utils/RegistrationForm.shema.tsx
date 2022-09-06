@@ -6,7 +6,8 @@ const registrationSchema = Yup.object().shape({
         .max(20, "Too Long!")
         .required("Required"),
     confirmPassword: Yup.string().oneOf([Yup.ref("password"), ""], "Password must match").required("Required"),
-    email: Yup.string().email("Invalid email").required("Required")
+    email: Yup.string().email("Invalid email").required("Required"),
+    username: Yup.string().min(1, "Too Short!").max(20, "Too Long!").required("Required")
 });
 
 export default registrationSchema

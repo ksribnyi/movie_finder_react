@@ -1,7 +1,6 @@
-import {Grid} from "@mui/material";
+import {Button, Grid} from "@mui/material";
 import React from "react";
 import "./FindMovie.css";
-import {StateMovie} from "../../redux/FindMovieReducer";
 
 const StyleGridMovie = {
     movieBox: {
@@ -25,8 +24,17 @@ const StyleGridMovie = {
     aboutMovie: {
         fontSize: 18,
         textAlign: "center" as "center",
-
     }
+}
+
+interface IGridMovie {
+    id: number,
+    key: number,
+    poster: string,
+    imdb_id: string,
+    year: string,
+    title: string,
+    buttonEffect: (id: number) => void
 }
 
 const imdbLink = "https://www.imdb.com/title/"
@@ -35,37 +43,31 @@ const generateLink = (imdb_id: string) => {
     return imdbLink + imdb_id + "/"
 }
 
-const GridMovie = ({movie}: { movie: StateMovie[] }) => {
+const GridMovie = ({buttonEffect, key, poster, imdb_id, year, title, id}: IGridMovie) => {
     return (
-        <div>
-            <Grid container rowSpacing={2} columnSpacing={2}
-                  className={"grid_movie"}>
-                {movie.map((row: StateMovie) => (
-                    <Grid key={row.id} item>
-                        <div style={StyleGridMovie.movieBox}>
-                            <div>{row.poster ?
-                                <a href={generateLink(row.imdb_id)}
-                                   target="_blank"
-                                   rel="noreferrer noopener">
-                                    <img style={StyleGridMovie.imgPoster} alt="poster movie"
-                                         src={row.poster}/>
-                                </a> : "No photo"}</div>
-                            <div style={StyleGridMovie.aboutMovie}>
-                                <div>{
-                                    <a style={StyleGridMovie.link}
-                                       href={generateLink(row.imdb_id)}
-                                       target="_blank"
-                                       rel="noreferrer noopener">{row.title}</a>}
-                                </div>
-                                <div>{row.year}</div>
-                            </div>
-                        </div>
-                    </Grid>
-                ))}
-            </Grid>
-
-        </div>
-
+        <Grid key={key} item>
+            <div style={StyleGridMovie.movieBox}>
+                <div>{poster ?
+                    <a href={generateLink(imdb_id)}
+                       target="_blank"
+                       rel="noreferrer noopener">
+                        <img style={StyleGridMovie.imgPoster} alt="poster movie"
+                             src={poster}/>
+                    </a> : "No photo"}</div>
+                <div style={StyleGridMovie.aboutMovie}>
+                    <div>{
+                        <a style={StyleGridMovie.link}
+                           href={generateLink(imdb_id)}
+                           target="_blank"
+                           rel="noreferrer noopener">{title}</a>}
+                    </div>
+                    <div>{year}</div>
+                    <div>
+                        <Button onClick={() => buttonEffect(id)}>ADD WATCH LATER</Button>
+                    </div>
+                </div>
+            </div>
+        </Grid>
     )
 }
 

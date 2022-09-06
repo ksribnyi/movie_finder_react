@@ -1,11 +1,12 @@
 import {Button, TextField} from "@mui/material";
 import React from "react";
-import GridMovie from "./GridMovie";
+import GridConstructor from "./GridConstructor";
 import "./FindMovie.css"
-import {StateMovie} from "../../redux/FindMovieReducer";
+import {responseMovie} from "../../models/response/Response";
+import {WatchLaterMovieAPI} from "../../api/WatchLaterMovie/WatchLaterMovieAPI";
 
 const StyleFindMovieGrid = {
-    textInput:{
+    textInput: {
         background: "grey",
         borderRadius: 5
     },
@@ -14,17 +15,22 @@ const StyleFindMovieGrid = {
         borderRadius: 5,
         height: 40,
         color: "black",
-        width: 55}
+        width: 55
+    }
 }
 
 type FindMovieProps = {
     findMovie: React.MouseEventHandler,
-    movie: Array<StateMovie>,
+    movie: responseMovie,
     onChange: React.ChangeEventHandler,
     bodyInput: string
 }
 
-const FindMovieGrid:React.FC<FindMovieProps> = ({findMovie, movie, onChange, bodyInput}) => {
+const AddWatchLater = (id: string | number) => {
+    WatchLaterMovieAPI.addWatchLater(id).then(date => console.log(date))
+}
+
+const FindMovieGrid: React.FC<FindMovieProps> = ({findMovie, movie, onChange, bodyInput}) => {
     return (
         <div className={"find_movie_control"}>
             <div className={"control"}>
@@ -34,7 +40,7 @@ const FindMovieGrid:React.FC<FindMovieProps> = ({findMovie, movie, onChange, bod
                         onClick={findMovie}>FIND
                 </Button>
             </div>
-            <GridMovie movie={movie}/>
+            <GridConstructor movie={movie} buttonEffect={AddWatchLater}/>
         </div>
 
     )

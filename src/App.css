@@ -1,23 +1,23 @@
-body{
-  background: gray;
-  margin: 0;
-  width: 100vw;
+body {
+    background: gray;
+    margin: 0;
+    width: 100vw;
 }
 
-.app-wrapper{
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+.app-wrapper {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 
 }
 
-.app-wrapper-content{
-  flex-grow: 3;
-  background: black;
+.app-wrapper-content {
+    flex-grow: 3;
+    background: black;
 }
 
 input:-webkit-autofill {
-  -webkit-box-shadow: inset 0 0 0 50px #808080; /* цвет вашего фона */
+    -webkit-box-shadow: inset 0 0 0 50px #808080;
 }
