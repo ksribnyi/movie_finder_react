@@ -1,11 +1,10 @@
 import React from "react";
 
-const FavoriteMovie:React.FC = () => {
+
+const WatchLater: React.FC = () => {
     return (
-        <div>
-            favorite
-        </div>
+        <div>Watch Later</div>
     )
 }
 
-export default FavoriteMovie
+export default WatchLater
