@@ -4,11 +4,9 @@ import {Button} from "@material-ui/core";
 import loginSchema from "../../utils/LoginForm.shema";
 import {TextField} from "@mui/material";
 import {useNavigate} from "react-router";
-import {OptionsObject, SnackbarKey, SnackbarMessage, useSnackbar} from "notistack";
+import {useSnackbar} from "notistack";
 import {registrationPatch} from "../../utils/variables";
-
-type enqueueMassage =
-    { response: { data: { detail: string} } }
+import {LoginTypes} from "./login.types";
 
 const StyleLoginForm = {
     formBlock: {
@@ -20,7 +18,6 @@ const StyleLoginForm = {
     },
     emailInput: {
         marginTop: 30,
-
     },
     passInput: {
         marginTop: 30
@@ -32,15 +29,9 @@ const StyleLoginForm = {
         margin: "auto",
         textAlign: "center" as "center"
     }
-
 }
 
-interface ILoginForm {
-    login: (email: string, password: string, navigate: (patch: string) =>
-        void, enqueueSnackbar: (message: SnackbarMessage, options?: OptionsObject) => SnackbarKey) => Promise<void>
-}
-
-const LoginForm = ({login}:ILoginForm) => {
+const LoginForm = ({login}:LoginTypes.ILoginForm) => {
     const navigate = useNavigate()
     const {enqueueSnackbar} = useSnackbar()
     const formik = useFormik(
@@ -49,7 +40,7 @@ const LoginForm = ({login}:ILoginForm) => {
             validationSchema: loginSchema,
             onSubmit: async (values) => {
                 await login(values.email, values.password, navigate, enqueueSnackbar)
-                    .catch((e: enqueueMassage) => enqueueSnackbar(e.response.data.detail))
+                    .catch((e: LoginTypes.enqueueMassage) => enqueueSnackbar(e.response.data.detail))
             }
         }
     )
@@ -93,7 +84,6 @@ const LoginForm = ({login}:ILoginForm) => {
                     </div>
                 </div>
             </form>
-
         </>
     );
 }

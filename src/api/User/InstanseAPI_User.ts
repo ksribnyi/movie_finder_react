@@ -1,6 +1,6 @@
 import axios from "axios";
-import {setLoginStatus} from "../../redux/AuthReducer";
 import {API_URL, loginPatch, refreshTokenPatch, tokenKey} from "../../utils/variables";
+import {setLoginStatus} from "../../redux/ActionsCreators";
 
 const $apiUser = axios.create({
     withCredentials: true,
@@ -49,6 +49,6 @@ $apiUser.interceptors.response.use(
         }
         return Promise.reject(err);
     }
-);
+)
 
 export default $apiUser;

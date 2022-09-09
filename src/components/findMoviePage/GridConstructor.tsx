@@ -18,7 +18,8 @@ const GridConstructor = ({
                                                                                            year={row.year}
                                                                                            title={row.title}
                                                                                            id={row.id}
-                                                                                           buttonEffect={buttonEffect}/>)}
+                                                                                           buttonEffect={buttonEffect}
+                                                                                           textBtn={"ADD WATCH LATER"}/>)}
             </Grid>
         </div>
     )

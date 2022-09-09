@@ -1,6 +1,7 @@
 import {Button, Grid} from "@mui/material";
 import React from "react";
 import "./FindMovie.css";
+import {FindmovieTypes} from "./findmovie.types";
 
 const StyleGridMovie = {
     movieBox: {
@@ -27,23 +28,13 @@ const StyleGridMovie = {
     }
 }
 
-interface IGridMovie {
-    id: number,
-    key: number,
-    poster: string,
-    imdb_id: string,
-    year: string,
-    title: string,
-    buttonEffect: (id: number) => void
-}
-
 const imdbLink = "https://www.imdb.com/title/"
 
 const generateLink = (imdb_id: string) => {
     return imdbLink + imdb_id + "/"
 }
 
-const GridMovie = ({buttonEffect, key, poster, imdb_id, year, title, id}: IGridMovie) => {
+const GridMovie = ({buttonEffect, key, poster, imdb_id, year, title, id, textBtn}: FindmovieTypes.IGridMovie) => {
     return (
         <Grid key={key} item>
             <div style={StyleGridMovie.movieBox}>
@@ -63,7 +54,7 @@ const GridMovie = ({buttonEffect, key, poster, imdb_id, year, title, id}: IGridM
                     </div>
                     <div>{year}</div>
                     <div>
-                        <Button onClick={() => buttonEffect(id)}>ADD WATCH LATER</Button>
+                        <Button onClick={() => buttonEffect(id)}>{textBtn}</Button>
                     </div>
                 </div>
             </div>

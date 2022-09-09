@@ -11,5 +11,5 @@ export const WatchLaterMovieAPI = {
     },
     deleteWatchLater(id: string | number): Promise<AxiosResponse<WatchLater, WatchLater>> {
         return $apiWatchLaterMovie.delete(`watch_later/${id}/destroy/`)
-    },
+    }
 }

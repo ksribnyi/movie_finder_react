@@ -1,15 +1,9 @@
 import {Grid} from "@mui/material";
 import React from "react";
-import {responseMovieWatchLater} from "../../models/response/Response";
 import GridMovie from "../findMoviePage/GridMovie";
+import {WatchLaterTypes} from "./watchLater.types";
 
-interface IGridProps {
-    movie: responseMovieWatchLater,
-    resFinished: boolean,
-    buttonEffect: (id: number) => void
-}
-
-const GridConstructorWatchLater = ({ movie, resFinished, buttonEffect }: IGridProps) => {
+const GridConstructorWatchLater = ({ movie, resFinished, buttonEffect }: WatchLaterTypes.IGridProps) => {
     return (
         <Grid container rowSpacing={2} columnSpacing={2}
               className={"grid_movie"}>
@@ -21,7 +15,8 @@ const GridConstructorWatchLater = ({ movie, resFinished, buttonEffect }: IGridPr
                                   year={row.movie.year}
                                   title={row.movie.title}
                                   id={row.id}
-                                  buttonEffect={buttonEffect}/>
+                                  buttonEffect={buttonEffect}
+                                  textBtn={"DELETE"}/>
             })}
         </Grid>
     )

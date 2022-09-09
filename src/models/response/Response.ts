@@ -18,7 +18,6 @@ export interface responseMovie {
     results: Array<StateMovie>
 }
 
-
 export interface StateMovie {
     results: {
         id: number,
@@ -58,4 +57,3 @@ export interface StateMovieWatchLater {
 export interface WatchLater {
     id: number
 }
-

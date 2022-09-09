@@ -1,11 +1,8 @@
 import React from "react";
 import LoginForm from "./LoginForm";
 import {connect} from "react-redux";
-import {login} from "../../redux/AuthReducer";
-
-type LoginPropsType = {
-    login: (email: string, password: string, navigate: (patch: string) => void) => Promise<void>
-}
+import {LoginTypes} from "./login.types";
+import {login} from "../../redux/Auth/loginThunk";
 
 const StyleContainerLogin = {
     LogBlock: {
@@ -18,7 +15,7 @@ const StyleContainerLogin = {
     }
 }
 
-const LoginContainer = ({login}: LoginPropsType) => {
+const LoginContainer = ({login}: LoginTypes.ILoginContainer) => {
     return (
         <div style={StyleContainerLogin.LogBlock}>
             <LoginForm login={login}/>

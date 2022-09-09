@@ -1,27 +1,16 @@
 import React, {useEffect, useState} from "react";
-import {responseMovieWatchLater} from "../../models/response/Response";
 import {connect} from "react-redux";
-import {requestMovieLater, setMovieWatchLater} from "../../redux/WatchLaterReducer";
 import GridConstructorWatchLater from "./GridConstructorWatchLater";
 import {WatchLaterMovieAPI} from "../../api/WatchLaterMovie/WatchLaterMovieAPI";
-
-interface IWatchLaterContainer {
-    movieLater: {
-        movieS: responseMovieWatchLater,
-    }
-}
-
-interface IWatchLaterProps {
-    Later: responseMovieWatchLater,
-    requestMovieLater: (callback: any) => void,
-    setMovieWatchLater: (data: any) => void,
-}
+import {WatchLaterTypes} from "./watchLater.types";
+import {requestMovieLater} from "../../redux/WatchLater/WatchLaterThunk";
+import {setMovieWatchLater} from "../../redux/ActionsCreators";
 
 const DeleteWatch = (id: number) => {
     WatchLaterMovieAPI.deleteWatchLater(id).then()
 }
 
-const WatchLaterContainer = ({Later, requestMovieLater, setMovieWatchLater}: IWatchLaterProps) => {
+const WatchLaterContainer = ({Later, requestMovieLater, setMovieWatchLater}: WatchLaterTypes.IWatchLaterProps) => {
     const [resFinished, setResFinished] = useState(false)
     console.log('LATER', Later)
     useEffect(() => {
@@ -35,8 +24,8 @@ const WatchLaterContainer = ({Later, requestMovieLater, setMovieWatchLater}: IWa
     )
 }
 
-const mapStateToProps = (state: IWatchLaterContainer) => ({
+const StateProps = (state: WatchLaterTypes.IWatchLaterContainer) => ({
     Later: state.movieLater.movieS,
 })
 
-export default connect(mapStateToProps, {requestMovieLater, setMovieWatchLater})(WatchLaterContainer)
+export default connect(StateProps, {requestMovieLater, setMovieWatchLater})(WatchLaterContainer)

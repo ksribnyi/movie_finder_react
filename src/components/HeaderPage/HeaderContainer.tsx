@@ -1,31 +1,16 @@
 import React from "react";
-import "./findMoviePage/FindMovie.css";
+import "../findMoviePage/FindMovie.css";
 import {useNavigate} from "react-router";
 import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
-import {clearUserData, setLoginStatus,} from "../redux/AuthReducer";
 import {Button} from "@mui/material";
-import {findmoviePatch} from "../utils/variables";
-
-type HeaderPropsType = {
-    loginStatus: boolean,
-    username?: string,
-    clearUserData: (email: null, username: null) => { type: string, email: null, username: null },
-    setLoginStatus: (status: boolean) => { type: string, status: boolean }
-}
-
-type AuthStatus = {
-    auth: {
-        loginStatus: boolean,
-        userData: {
-            username: string
-        }
-    }
-}
+import {findmoviePatch} from "../../utils/variables";
+import {clearUserData, setLoginStatus} from "../../redux/ActionsCreators";
+import {HeaderTypes} from "./header.types";
 
 const logo = "../assets/image/movies_logo.png"
 
-const HeaderContainer = ({loginStatus, username, clearUserData, setLoginStatus}: HeaderPropsType) => {
+const HeaderContainer = ({loginStatus, username, clearUserData, setLoginStatus}: HeaderTypes.IHeaderProps) => {
     const logClick = () => {
         clearUserData(null, null)
         localStorage.removeItem("token")
@@ -49,7 +34,7 @@ const HeaderContainer = ({loginStatus, username, clearUserData, setLoginStatus}:
                     <NavLink to="/favorite" style={({isActive}: { isActive: boolean }) => ({
                         color: isActive ? "#186d74" : "",
                         fontWeight: isActive ? "bold" : ""
-                    })}>Watch Later</NavLink>
+                    })}>My favorite</NavLink>
                 </div>}
             </nav>
             {loginStatus && <div>{username}</div>}
@@ -58,15 +43,14 @@ const HeaderContainer = ({loginStatus, username, clearUserData, setLoginStatus}:
                     <Button className={"LogIn"} onClick={() => logClick()}>Logout</Button> :
                     <p className={"LogIn"} onClick={() => navigate("/login")}>login</p>
                 }
-
             </div>
         </div>
     )
 }
 
-const mapStateToProps = (state: AuthStatus) => ({
+const StateProps = (state: HeaderTypes.StateProps) => ({
     loginStatus: state.auth.loginStatus,
     username: state.auth.userData.username
 })
 
-export default connect(mapStateToProps, {clearUserData, setLoginStatus})(HeaderContainer)
+export default connect(StateProps, {clearUserData, setLoginStatus})(HeaderContainer)
