@@ -13,14 +13,47 @@ export interface AuthResponseUser {
     username: string
 }
 
+export interface responseMovie {
+    count: number,
+    results: Array<StateMovie>
+}
+
 export interface StateMovie {
-    id: number,
-    title: string,
-    imdb_id: string,
-    wiki_link?: string,
-    year: string,
-    type?: string
-    poster?: string,
-    created_at: string,
-    updated_at: string
+    results: {
+        id: number,
+        likes_count: number,
+        title: string,
+        imdb_id: string,
+        wiki_link?: string,
+        year: string,
+        type?: string
+        poster?: string,
+        created_at: string,
+        updated_at: string
+    }
+}
+
+export interface responseMovieWatchLater {
+    count: number,
+    results: Array<StateMovieWatchLater>
+}
+
+export interface StateMovieWatchLater {
+    id:number,
+    movie: {
+        id: number,
+        likes_count: number,
+        title: string,
+        imdb_id: string,
+        wiki_link?: string,
+        year: string,
+        type?: string
+        poster?: string,
+        created_at: string,
+        updated_at: string
+    }
+}
+
+export interface WatchLater {
+    id: number
 }

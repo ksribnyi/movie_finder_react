@@ -8,3 +8,7 @@ export enum AuthActions {
     SET_USER_DATA = "SET_USER_DATA",
     CLEAR_USER_DATA = "CLEAR_USER_DATA"
 }
+
+export enum WatchLaterActions {
+    SET_MOVIE_WATCH_LATER = "SET_MOVIE_WATCH_LATER"
+}

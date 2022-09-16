@@ -23,5 +23,4 @@ const LoginContainer = ({login}: LoginTypes.ILoginContainer) => {
     )
 }
 
-
 export default connect(null, {login})(LoginContainer);

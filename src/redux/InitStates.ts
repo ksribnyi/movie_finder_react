@@ -10,4 +10,7 @@ export namespace InitStates {
         movie: [],
         bodyInput: ""
     }
+    export const WatchLater = {
+        movieS: [],
+    }
 }

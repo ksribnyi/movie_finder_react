@@ -12,6 +12,4 @@ export const AuthAPI = {
     getToken(username: string, password: string): Promise<AxiosResponse<TokenResponse, TokenResponse>> {
         return api.post("api/token/", {email: username, password: password})
     }
-
-
 }

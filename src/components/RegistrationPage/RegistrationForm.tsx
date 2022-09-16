@@ -26,7 +26,6 @@ const StyleRegistrationForm = {
     },
     emailInput: {
         marginTop: 20,
-
     },
     passInput: {
         marginTop: 20

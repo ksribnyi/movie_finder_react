@@ -1,10 +1,10 @@
 import {AnyAction, Dispatch} from "redux";
-import {MovieAPI} from "../../api/Movie/MovieAPI";
 import {setMovie} from "../ActionsCreators";
+import {FindMovieAPI} from "../../api/FindMovie/FindMovieAPI";
 
 export const requestMovie = (name: string) => {
     return async (dispatch: Dispatch<AnyAction>) => {
-        const data = await MovieAPI.requestMovie(name)
+        const data = await FindMovieAPI.requestMovie(name)
         dispatch(setMovie(data));
     }
 }
