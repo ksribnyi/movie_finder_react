@@ -2,6 +2,7 @@ import {Button, Grid} from "@mui/material";
 import React from "react";
 import "./FindMovie.css";
 import {FindmovieTypes} from "./findmovie.types";
+import LikeMovie from "./LikeMovie";
 
 const StyleGridMovie = {
     movieBox: {
@@ -34,7 +35,20 @@ const generateLink = (imdb_id: string) => {
     return imdbLink + imdb_id + "/"
 }
 
-const GridMovie = ({buttonEffect, key, poster, imdb_id, year, title, id, textBtn}: FindmovieTypes.IGridMovie) => {
+const GridMovie = ({
+                       buttonEffect,
+                       key,
+                       poster,
+                       imdb_id,
+                       year,
+                       title,
+                       id,
+                       textBtn,
+                       likesCount,
+                       isLiked,
+                       like,
+                       unlike
+                   }: FindmovieTypes.IGridMovie) => {
     return (
         <Grid key={key} item>
             <div style={StyleGridMovie.movieBox}>
@@ -53,8 +67,13 @@ const GridMovie = ({buttonEffect, key, poster, imdb_id, year, title, id, textBtn
                            rel="noreferrer noopener">{title}</a>}
                     </div>
                     <div>{year}</div>
-                    <div>
+                    <div style={{display: "flex"}}>
                         <Button onClick={() => buttonEffect(id)}>{textBtn}</Button>
+                        {isLiked !== undefined && <LikeMovie likesCount={likesCount}
+                                                             isLiked={isLiked}
+                                                             like={like}
+                                                             unlike={unlike}
+                                                             id={id}/>}
                     </div>
                 </div>
             </div>

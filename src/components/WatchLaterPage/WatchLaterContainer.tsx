@@ -12,7 +12,6 @@ const DeleteWatch = (id: number) => {
 
 const WatchLaterContainer = ({Later, requestMovieLater, setMovieWatchLater}: WatchLaterTypes.IWatchLaterProps) => {
     const [resFinished, setResFinished] = useState(false)
-    console.log('LATER', Later)
     useEffect(() => {
         requestMovieLater(setResFinished)
         return () => {

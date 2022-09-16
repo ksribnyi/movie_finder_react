@@ -47,7 +47,7 @@ const RegistrationForm: React.FC = () => {
             initialValues: {email: "", username: "", password: "", confirmPassword: ""},
             validationSchema: registrationSchema,
             onSubmit: (values, actions) => {
-                AuthAPI.registration(values.email, values.username, values.password)
+                AuthAPI.registration(values.email, values.password, values.username)
                     .then(() => {navigate(findmoviePatch)})
                     .catch((e) => {
                     const keys = Object.keys(e.response.data)

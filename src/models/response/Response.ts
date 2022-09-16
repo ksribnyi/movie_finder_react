@@ -22,6 +22,7 @@ export interface StateMovie {
     results: {
         id: number,
         likes_count: number,
+        is_liked: boolean,
         title: string,
         imdb_id: string,
         wiki_link?: string,
@@ -43,6 +44,7 @@ export interface StateMovieWatchLater {
     movie: {
         id: number,
         likes_count: number,
+        is_liked: boolean,
         title: string,
         imdb_id: string,
         wiki_link?: string,
