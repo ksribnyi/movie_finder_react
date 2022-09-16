@@ -18,7 +18,6 @@ const StyleLoginForm = {
     },
     emailInput: {
         marginTop: 30,
-
     },
     passInput: {
         marginTop: 30
@@ -30,7 +29,6 @@ const StyleLoginForm = {
         margin: "auto",
         textAlign: "center" as "center"
     }
-
 }
 
 const LoginForm = ({login}:LoginTypes.ILoginForm) => {
@@ -86,7 +84,6 @@ const LoginForm = ({login}:LoginTypes.ILoginForm) => {
                     </div>
                 </div>
             </form>
-
         </>
     );
 }

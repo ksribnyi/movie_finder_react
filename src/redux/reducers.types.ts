@@ -8,4 +8,7 @@ export namespace ReducersTypes {
         movie?: Array<StateMovie>,
         bodyInput?: string,
     }
+    export interface IWatchLater {
+        movieS: Array<StateMovie>
+    }
 }

@@ -2,17 +2,17 @@ import React, {useEffect} from "react";
 import "./App.css";
 import FindMovieContainer from "./components/findMoviePage/FindMovieContainer";
 import HeaderContainer from "./components/HeaderPage/HeaderContainer";
-import FavoriteMovie from "./components/FavoriteMovie";
 import LoginContainer from "./components/LoginPage/LoginContainer";
 import Registration from "./components/RegistrationPage/RegistrationForm"
 import {Navigate, Route, Routes} from "react-router";
 import {connect} from "react-redux";
 import {useSnackbar} from "notistack";
 import {findmoviePatch, registrationPatch} from "./utils/variables";
-import {AppTypes} from "./app.types";
+import WatchLaterContainer from "./components/WatchLaterPage/WatchLaterContainer";
 import {checkAuth} from "./redux/Auth/loginThunk";
+import {AppTypes} from "./app.types";
 
-const App = ({loginStatus, checkAuth}: AppTypes.IAppProps) => {
+const App = ({checkAuth}: AppTypes.IAppProps) => {
     const {enqueueSnackbar} = useSnackbar()
     useEffect(() => {
         checkAuth(enqueueSnackbar)
@@ -26,15 +26,11 @@ const App = ({loginStatus, checkAuth}: AppTypes.IAppProps) => {
                     <Route path="/login" element={<LoginContainer/>}/>
                     <Route path={registrationPatch} element={<Registration/>}/>
                     <Route path={findmoviePatch} element={<FindMovieContainer/>}/>
-                    {(loginStatus) && <Route path="/favorite " element={<FavoriteMovie/>}/>}
+                    <Route path="/favorite" element={<WatchLaterContainer/>}/>
                 </Routes>
             </div>
         </div>
     )
 }
 
-const StateProps = (state: AppTypes.IAuthStatus) => ({
-    loginStatus: state.auth.loginStatus
-})
-
-export default connect(StateProps, {checkAuth})(App);
+export default connect(null, {checkAuth})(App);
