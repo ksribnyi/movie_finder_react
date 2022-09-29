@@ -7,6 +7,8 @@ export namespace InitStates {
         }
     }
     export const FindMovie = {
+        next: "",
+        previous: "",
         movie: [],
         bodyInput: ""
     }

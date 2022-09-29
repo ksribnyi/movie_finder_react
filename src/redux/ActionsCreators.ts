@@ -8,7 +8,8 @@ export const setUserData = (email: string, username: string) => ({type: AuthActi
 export const clearUserData = (email: null, username: null) => ({type: AuthActions.CLEAR_USER_DATA, email, username})
 
 //FindMovie reducer
-export const setMovie = (movie: AxiosResponse<responseMovie, responseMovie>) => ({type: FindMovieActions.SET_MOVIE, movie})
+export const setMovie = (data: AxiosResponse<responseMovie, responseMovie>) => ({type: FindMovieActions.SET_MOVIE, data})
+export const setMovieMore = (data: AxiosResponse<responseMovie, responseMovie>) => ({type: FindMovieActions.SET_MOVIE_MORE, data})
 export const setSearchBody = (body: string) => ({type: FindMovieActions.SET_SEARCH_BODY, body})
 
 //WatchLater reducer
