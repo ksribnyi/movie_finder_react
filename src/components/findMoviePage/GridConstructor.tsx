@@ -3,7 +3,8 @@ import React from "react";
 import "./FindMovie.css";
 import {StateMovie} from "../../models/response/Response";
 import GridMovie from "./GridMovie";
-import InfiniteScroll from "react-infinite-scroll-component";
+import InfiniteScroll from 'react-infinite-scroller';
+
 
 
 const GridConstructor = ({movie, next, buttonEffect, requestMovieMore}:
@@ -14,7 +15,7 @@ const GridConstructor = ({movie, next, buttonEffect, requestMovieMore}:
                                  buttonEffect: (id: string | number) => void
                              }) => {
     return (
-        <InfiniteScroll next={() => requestMovieMore(next)} hasMore={true} loader={"Sd"} dataLength={2}>
+        <InfiniteScroll loadMore={() => requestMovieMore(next)} hasMore={true} >
             <Grid container rowSpacing={2} columnSpacing={2}
                   className={"grid_movie"}>
                 {movie.map((row: any) => <GridMovie key={row.id}
