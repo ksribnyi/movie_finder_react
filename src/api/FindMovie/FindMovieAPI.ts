@@ -1,16 +1,16 @@
-import {instance} from "./InstanseApi_FindMovie";
+import {$apiFindMovie} from "./InstanseApi_FindMovie";
 import {AxiosResponse} from "axios";
-import {responseMovie} from "../../models/response/Response";
 import {$apiWatchLaterMovie} from "../WatchLaterMovie/InstanseApi_WatchLaterMovie";
+import {FindMovieApiTypes} from "./findMovieApi.types";
 
 export const FindMovieAPI = {
-    requestMovie(name: string): Promise<AxiosResponse<responseMovie, responseMovie>> {
-        return instance.get(`find_movie/${name}/`).then(response => response.data)
+    requestMovie({name}: FindMovieApiTypes.requestMovie.Request): Promise<AxiosResponse<FindMovieApiTypes.requestMovie.Response, FindMovieApiTypes.requestMovie.Response>> {
+        return $apiFindMovie.get(`find_movie/${name}/`).then(response => response.data)
     },
-    likeMovie(id: number) {
-        return $apiWatchLaterMovie.post(`movie/${id}/like/`)
+    likeMovie({id}: FindMovieApiTypes.likeMovie.Request) {
+        return $apiFindMovie.post(`movie/${id}/like/`)
     },
-    unlikeMovie(id: number) {
-        return $apiWatchLaterMovie.post(`movie/${id}/unlike/`)
+    unlikeMovie({id}: FindMovieApiTypes.unlikeMovie.Request) {
+        return $apiFindMovie.post(`movie/${id}/unlike/`)
     }
 }

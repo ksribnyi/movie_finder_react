@@ -7,7 +7,7 @@ import {requestMovieLater} from "../../redux/WatchLater/WatchLaterThunk";
 import {setMovieWatchLater} from "../../redux/ActionsCreators";
 
 const DeleteWatch = (id: number) => {
-    WatchLaterMovieAPI.deleteWatchLater(id).then()
+    WatchLaterMovieAPI.deleteWatchLater({id})
 }
 
 const WatchLaterContainer = ({Later, requestMovieLater, setMovieWatchLater}: WatchLaterTypes.IWatchLaterProps) => {

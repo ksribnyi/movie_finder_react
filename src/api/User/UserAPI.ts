@@ -1,9 +1,9 @@
 import {AxiosResponse} from "axios";
-import {AuthResponseUser} from "../../models/response/Response";
 import $apiUser from "./InstanseAPI_User";
+import { UserApiTypes } from "./userApi.types";
 
 export const UserAPI = {
-    user(): Promise<AxiosResponse<AuthResponseUser, AuthResponseUser>> {
+    user(): Promise<AxiosResponse<UserApiTypes.user.Response, UserApiTypes.user.Response>> {
         return $apiUser.get("user/")
     }
 }

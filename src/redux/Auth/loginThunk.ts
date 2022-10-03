@@ -8,13 +8,13 @@ import {UserAPI} from "../../api/User/UserAPI";
 
 export const login = (email: string, password: string, navigate: (patch: string) => void) => {
     return async (dispatch: Dispatch<AnyAction>) => {
-        const token = await AuthAPI.getToken(email, password)
+        const token = await AuthAPI.getToken({email, password})
         const tokenData = {
             access: token.data.access,
             refresh: token.data.refresh
         }
         localStorage.setItem("token", JSON.stringify(tokenData))
-        const res = await AuthAPI.login(email, password)
+        const res = await AuthAPI.login({email, password})
         dispatch(setLoginStatus(true))
         navigate("/findmovie")
         dispatch(setUserData(res.data.email, res.data.username))
