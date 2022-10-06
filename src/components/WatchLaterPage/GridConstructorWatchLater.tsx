@@ -8,7 +8,6 @@ const GridConstructorWatchLater = ({ movie, resFinished, buttonEffect }: WatchLa
         <Grid container rowSpacing={2} columnSpacing={2}
               className={"grid_movie"}>
             {resFinished && movie.results.map((row: any) => {
-                console.log(row)
                 return <GridMovie key={row.id}
                                   poster={row.movie.poster}
                                   imdb_id={row.movie.imdb_id}
