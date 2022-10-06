@@ -10,10 +10,10 @@ export const requestMovie = (name: string) => {
 }
 
 export const requestMovieMore = (url: string) => {
-    console.log("hyi")
+    "hyi")
     return async (dispatch: Dispatch<AnyAction>) => {
         const data = await FindMovieAPI.requestMovieMore(url)
-        console.log(data)
+        data)
         dispatch(setMovieMore(data));
     }
 }
