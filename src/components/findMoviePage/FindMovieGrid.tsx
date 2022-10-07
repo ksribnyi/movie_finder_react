@@ -14,7 +14,7 @@ const StyleFindMovieGrid = {
         background: "grey",
         borderRadius: 5,
         height: 40,
-        color: "black",
+        color: "white",
         width: 55
     }
 }

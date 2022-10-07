@@ -7,11 +7,11 @@ export const $apiFindMovie = axios.create({
 })
 
 $apiFindMovie.interceptors.request.use((config) => {
-    let token
     const value: string | null = localStorage.getItem(tokenKey)
     if (typeof value === "string") {
-        token = JSON.parse(value)
+        const token = JSON.parse(value)
+        config.headers!.Authorization = `Bearer ${token.access}`
+        return config
     }
-    config.headers!.Authorization = `Bearer ${token.access}`
     return config
 })

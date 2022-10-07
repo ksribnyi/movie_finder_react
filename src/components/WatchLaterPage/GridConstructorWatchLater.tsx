@@ -2,6 +2,7 @@ import {Grid} from "@mui/material";
 import React from "react";
 import GridMovie from "../findMoviePage/GridMovie";
 import {WatchLaterTypes} from "./watchLater.types";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const GridConstructorWatchLater = ({ movie, resFinished, buttonEffect }: WatchLaterTypes.IGridProps) => {
     return (
@@ -12,7 +13,7 @@ const GridConstructorWatchLater = ({ movie, resFinished, buttonEffect }: WatchLa
                                   movieData={row.movie}
                                   id={row.id}
                                   buttonEffect={buttonEffect}
-                                  textBtn={"DELETE"}/>
+                                  textBtn={<DeleteIcon style={{color: "white"}}/>}/>
             })}
         </Grid>
     )

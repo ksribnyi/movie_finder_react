@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Dispatch, ReactElement, SetStateAction} from "react";
 import {FindMovieApiTypes} from "../../api/FindMovie/findMovieApi.types";
 
 export namespace FindmovieTypes {
@@ -15,7 +15,8 @@ export namespace FindmovieTypes {
             bodyInput: string
         },
         requestMovie: (name: string) => Promise<void>,
-        setSearchBody: (body: string) => { type: string, body: string }
+        clearMovie: (data: any) => any,
+        setSearchBody: (body: string) => { type: string, body: string },
     }
 
     export interface IGridMovie {
@@ -23,7 +24,7 @@ export namespace FindmovieTypes {
         id: number,
         movieData: movieData,
         buttonEffect: (id: number) => void,
-        textBtn: string
+        textBtn: ReactElement<any, any>
     }
 
     export interface ILikeMovie {
@@ -33,18 +34,24 @@ export namespace FindmovieTypes {
     }
 
     export interface ILikeIcon {
-        isLiked: boolean,
-        id: number
+        liked: boolean,
+        id: number,
+        setLIke: Dispatch<SetStateAction<boolean>>,
+        setCount: Dispatch<SetStateAction<number>>,
+        count: number
     }
 
     export interface IGridConstructor {
         movie: FindMovieApiTypes.requestMovie.Response,
         buttonEffect: (id: number) => void
     }
-    
+
     export interface IMoviePhoto {
-        poster: string, 
-        linkImdb: string
+        poster: string,
+        linkImdb: string,
+        id: number,
+        buttonEffect: (id: number) => void,
+        textBtn: ReactElement<any, any>
     }
 
     export interface movieData {
@@ -54,5 +61,12 @@ export namespace FindmovieTypes {
         year: string,
         likes_count: number,
         is_liked: boolean
+    }
+
+    export interface ILikeButton {
+        id: number,
+        setLIke:Dispatch<SetStateAction<boolean>>,
+        setCount:Dispatch<SetStateAction<number>>,
+        count: number
     }
 }

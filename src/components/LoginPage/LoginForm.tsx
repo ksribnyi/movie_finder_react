@@ -15,15 +15,23 @@ const StyleLoginForm = {
         display: "flex",
         flexDirection: "column" as "column",
         alignItems: "center" as "center",
+        position: "relative" as "relative"
     },
     emailInput: {
-        marginTop: 30,
+        top: 30,
+        position: "absolute" as "absolute"
     },
     passInput: {
-        marginTop: 30
+        top: 110,
+        position: "absolute" as "absolute"
     },
     btnSubmit: {
-        marginTop: 70
+        top: 210,
+        position: "absolute" as "absolute"
+    },
+    backRegistration: {
+        top: 250,
+        position: "absolute" as "absolute"
     },
     h1: {
         margin: "auto",
@@ -79,7 +87,7 @@ const LoginForm = ({login}:LoginTypes.ILoginForm) => {
                             Submit
                         </Button>
                     </div>
-                    <div>
+                    <div style={StyleLoginForm.backRegistration}>
                         <p onClick={() => navigate(registrationPatch)}>Registration</p>
                     </div>
                 </div>

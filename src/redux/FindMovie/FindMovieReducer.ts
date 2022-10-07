@@ -10,6 +10,11 @@ const FindMovieReducer = (state: ReducersTypes.IFindMovie = InitStates.FindMovie
                 ...state,
                 movie: action.movie
             }
+        case FindMovieActions.CLEAR_MOVIE :
+            return {
+                ...state,
+                movie: action.movie
+            }
         case FindMovieActions.SET_SEARCH_BODY :
             return {
                 ...state,
