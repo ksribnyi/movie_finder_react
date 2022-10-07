@@ -1,6 +1,5 @@
 import {$apiFindMovie} from "./InstanseApi_FindMovie";
 import {AxiosResponse} from "axios";
-import {$apiWatchLaterMovie} from "../WatchLaterMovie/InstanseApi_WatchLaterMovie";
 import {FindMovieApiTypes} from "./findMovieApi.types";
 
 export const FindMovieAPI = {
@@ -12,5 +11,8 @@ export const FindMovieAPI = {
     },
     unlikeMovie({id}: FindMovieApiTypes.unlikeMovie.Request) {
         return $apiFindMovie.post(`movie/${id}/unlike/`)
+    },
+    requestMovieMore(url: string): Promise<AxiosResponse<FindMovieApiTypes.requestMovie.Response, FindMovieApiTypes.requestMovie.Response>> {
+        return $apiFindMovie.get(url).then(response => response.data)
     }
 }

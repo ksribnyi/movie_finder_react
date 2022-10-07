@@ -13,6 +13,7 @@ export const setMovie = (movie: AxiosResponse<FindMovieApiTypes.requestMovie.Res
     type: FindMovieActions.SET_MOVIE,
     movie
 })
+export const setMovieMore = (movie: AxiosResponse<FindMovieApiTypes.requestMovie.Response, FindMovieApiTypes.requestMovie.Response>) => ({type: FindMovieActions.SET_MOVIE_MORE, movie})
 export const setSearchBody = (body: string) => ({type: FindMovieActions.SET_SEARCH_BODY, body})
 
 //WatchLater reducer

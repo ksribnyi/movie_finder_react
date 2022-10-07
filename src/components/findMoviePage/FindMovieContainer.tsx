@@ -3,9 +3,9 @@ import {connect} from "react-redux";
 import FindMovieGrid from "./FindMovieGrid";
 import {setSearchBody} from "../../redux/ActionsCreators";
 import {FindmovieTypes} from "./findmovie.types";
-import {requestMovie} from "../../redux/FindMovie/findMovieThunk";
+import {requestMovie, requestMovieMore} from "../../redux/FindMovie/findMovieThunk";
 
-const FindMovieContainer = ({requestMovie, setSearchBody, movie}: FindmovieTypes.IMovieContainer) => {
+const FindMovieContainer = ({requestMovie, requestMovieMore, setSearchBody, movie}: FindmovieTypes.IMovieContainer) => {
     const findMovie = async () => {
         await requestMovie(movie.bodyInput)
     }
@@ -14,7 +14,8 @@ const FindMovieContainer = ({requestMovie, setSearchBody, movie}: FindmovieTypes
         setSearchBody(body)
     }
     return (
-        <FindMovieGrid findMovie={findMovie} onChange={onChange} movie={movie.movie} bodyInput={movie.bodyInput}/>
+        <FindMovieGrid findMovie={findMovie} requestMovieMore={requestMovieMore} onChange={onChange} movie={movie.movie}
+                       next={movie.next} bodyInput={movie.bodyInput}/>
     )
 }
 
@@ -22,4 +23,4 @@ const StateProps = (state: FindmovieTypes.IMovieContainer) => ({
     movie: state.movie,
 })
 
-export default connect(StateProps, {requestMovie, setSearchBody})(FindMovieContainer)
+export default connect(StateProps, {requestMovie, requestMovieMore, setSearchBody})(FindMovieContainer)

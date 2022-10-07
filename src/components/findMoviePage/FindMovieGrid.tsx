@@ -23,7 +23,7 @@ const AddWatchLater = (id: number) => {
     WatchLaterMovieAPI.addWatchLater({id})
 }
 
-const FindMovieGrid: React.FC<FindmovieTypes.IMovieProps> = ({findMovie, movie, onChange, bodyInput}) => {
+const FindMovieGrid: React.FC<FindmovieTypes.IMovieProps> = ({findMovie, requestMovieMore, movie, next, onChange, bodyInput}) => {
     return (
         <div className={"find_movie_control"}>
             <div className={"control"}>
@@ -33,7 +33,7 @@ const FindMovieGrid: React.FC<FindmovieTypes.IMovieProps> = ({findMovie, movie, 
                         onClick={findMovie}>FIND
                 </Button>
             </div>
-            <GridConstructor movie={movie} buttonEffect={AddWatchLater}/>
+            <GridConstructor movie={movie} requestMovieMore={requestMovieMore} next={next} buttonEffect={AddWatchLater}/>
         </div>
     )
 }
