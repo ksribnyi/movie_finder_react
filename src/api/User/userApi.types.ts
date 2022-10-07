@@ -5,4 +5,10 @@ export namespace UserApiTypes {
             username: string
         }
     }
+    export namespace changePassword {
+        export interface Request {
+            oldPassword: string,
+            newPassword: string
+        }
+    }
 }

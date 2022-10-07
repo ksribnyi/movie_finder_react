@@ -1,14 +1,20 @@
-import {useNavigate} from "react-router";
 import {useSnackbar} from "notistack";
 import {useFormik} from "formik";
-import loginSchema from "../../../utils/LoginForm.shema";
-import {LoginTypes} from "../../LoginPage/login.types";
-import {TextField} from "@mui/material";
-import {Button} from "@material-ui/core";
-import {registrationPatch} from "../../../utils/variables";
+import {TextField, Button} from "@mui/material";
 import React from "react";
+import {LoginTypes} from "../../LoginPage/login.types";
+import {UserAPI} from "../../../api/User/UserAPI";
+import ChangePasswordSchema from "../../../utils/ChangePassword.shema";
 
 const StyleLoginForm = {
+    LogBlock: {
+        width: 300,
+        height: 350,
+        background: "gray",
+        marginTop: 50,
+        marginLeft: "auto",
+        marginRight: "auto"
+    },
     formBlock: {
         height: 280,
         margin: "auto",
@@ -24,10 +30,6 @@ const StyleLoginForm = {
     },
     btnSubmit: {
         marginTop: 70
-    },
-    h1: {
-        margin: "auto",
-        textAlign: "center" as "center"
     }
 }
 
@@ -36,16 +38,15 @@ const ChangePassword = () => {
     const formik = useFormik(
         {
             initialValues: {oldPassword: "", newPassword: ""},
-            validationSchema: loginSchema,
+            validationSchema: ChangePasswordSchema,
             onSubmit: async (values) => {
-
+                await UserAPI.changePassword(values)
+                    .catch((e: LoginTypes.enqueueMassage) => enqueueSnackbar(e.response.data.detail))
             }
         }
     )
     return (
-        <>
-            <h1 style={StyleLoginForm.h1}>Login</h1>
-            <form onSubmit={formik.handleSubmit}>
+            <form style={StyleLoginForm.LogBlock} onSubmit={formik.handleSubmit}>
                 <div style={StyleLoginForm.formBlock}>
                     <div style={StyleLoginForm.emailInput}>
                         <TextField
@@ -73,14 +74,13 @@ const ChangePassword = () => {
                         />
                     </div>
                     <div style={StyleLoginForm.btnSubmit}>
-                        <Button variant="contained" type="submit">
+                        <Button style={{backgroundColor: "#e0e0e0", color: "black"}} variant="contained" type="submit">
                             Submit
                         </Button>
                     </div>
                 </div>
             </form>
-        </>
-    );
+    )
 }
 
 export default ChangePassword

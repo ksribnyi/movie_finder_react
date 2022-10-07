@@ -1,11 +1,10 @@
 import * as Yup from "yup";
 
-const loginSchema = Yup.object().shape({
-    password: Yup.string()
+const ChangePasswordSchema = Yup.object().shape({
+    newPassword: Yup.string()
         .min(8, "Too Short!")
         .max(20, "Too Long!")
-        .required("Required"),
-    email: Yup.string().email("Invalid email").required("Required")
+        .required("Required")
 });
 
-export default loginSchema
+export default ChangePasswordSchema

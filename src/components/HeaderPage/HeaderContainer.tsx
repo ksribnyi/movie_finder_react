@@ -6,14 +6,17 @@ import {HeaderTypes} from "./header.types";
 import AuthBlock from "./AuthBlock";
 import {findmoviePatch} from "../../utils/variables";
 import {NavLink} from "react-router-dom";
+import {useNavigate} from "react-router";
 
 const logo = require("../../../src/assets/image/logo.png")
 
 const HeaderContainer = ({loginStatus, username, clearUserData, setLoginStatus}: HeaderTypes.IHeaderProps) => {
+    const navigate = useNavigate()
     const logoutClick = () => {
         clearUserData(null, null)
         localStorage.removeItem("token")
         setLoginStatus(false)
+        navigate("/findmovie")
     }
     return (
         <div className={"header"}>

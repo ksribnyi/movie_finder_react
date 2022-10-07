@@ -23,7 +23,7 @@ const Navbar = ({username, logoutClick}: HeaderTypes.INavbar) => {
             <PopupState variant="popover" popupId="demo-popup-popover">
                 {(popupState: any) => (
                     <div>
-                        <Button style={{width: 150, marginRight: 20}} variant="contained"
+                        <Button style={{width: 150, marginRight: 20}} color={"primary"} variant="contained"
                                 size={"large"} {...bindTrigger(popupState)}>
                             {username}
                         </Button>
@@ -40,8 +40,10 @@ const Navbar = ({username, logoutClick}: HeaderTypes.INavbar) => {
                         >
                             <div style={{display: "flex", flexDirection: "column", width: 150}}>
                                 <Button style={{borderRadius: 0}} size={"large"} color={"primary"} variant="contained"
-                                        onClick={() => navigate("/favorite")}>Favorite</Button>
-                                <Button style={{borderRadius: 0}} size={"large"} variant="contained"
+                                        onClick={() => navigate("/favorite")} >Favorite</Button>
+                                <Button style={{borderRadius: 0}} size={"large"} color={"primary"} variant="contained"
+                                        onClick={() => navigate("/settings")}>Settings</Button>
+                                <Button style={{borderRadius: 0}} size={"large"} color={"primary"} variant="contained"
                                         onClick={() => logoutClick()}>Logout</Button>
                             </div>
                         </Popover>
