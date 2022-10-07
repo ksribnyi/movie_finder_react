@@ -11,6 +11,7 @@ import WatchLaterContainer from "./components/WatchLaterPage/WatchLaterContainer
 import {checkAuth} from "./redux/Auth/loginThunk";
 import {AppTypes} from "./app.types";
 import LoginContainer from "./components/LoginPage/LoginContainer";
+import SettingsContainer from "./components/SettingsPage/SettingsContainer";
 
 const App = ({checkAuth}: AppTypes.IAppProps) => {
     const {enqueueSnackbar} = useSnackbar()
@@ -27,6 +28,7 @@ const App = ({checkAuth}: AppTypes.IAppProps) => {
                     <Route path={registrationPatch} element={<Registration/>}/>
                     <Route path={findmoviePatch} element={<FindMovieContainer/>}/>
                     <Route path="/favorite" element={<WatchLaterContainer/>}/>
+                    <Route path="/settings" element={<SettingsContainer/>}/>
                 </Routes>
             </div>
         </div>
