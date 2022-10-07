@@ -5,18 +5,22 @@ export namespace FindmovieTypes {
     export interface IMovieProps {
         findMovie: React.MouseEventHandler,
         movie: FindMovieApiTypes.requestMovie.Response,
+        next: string,
         onChange: React.ChangeEventHandler,
-        bodyInput: string
+        bodyInput: string,
+        requestMovieMore: (name: string) => Promise<void>,
     }
 
     export interface IMovieContainer {
         movie: {
+            next: string,
             movie: FindMovieApiTypes.requestMovie.Response,
-            bodyInput: string
+            bodyInput: string,
         },
         requestMovie: (name: string) => Promise<void>,
+        setSearchBody: (body: string) => { type: string, body: string }
+        requestMovieMore: (name: string) => Promise<void>,
         clearMovie: (data: any) => any,
-        setSearchBody: (body: string) => { type: string, body: string },
     }
 
     export interface IGridMovie {

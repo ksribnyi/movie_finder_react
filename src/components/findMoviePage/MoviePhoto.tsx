@@ -27,7 +27,6 @@ const CheckPhoto = ({poster, linkImdb, buttonEffect, id, textBtn}: FindmovieType
                          src={poster}/>
                 </a>
             </div>
-
         )
     } else {
         return "No photo"
