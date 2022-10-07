@@ -1,6 +1,7 @@
 import {AuthActions, FindMovieActions, WatchLaterActions} from "./ActionsType";
 import {AxiosResponse} from "axios";
-import {responseMovie, responseMovieWatchLater} from "../models/response/Response";
+import {FindMovieApiTypes} from "../api/FindMovie/findMovieApi.types";
+import { WatchLaterApiTypes } from "../api/WatchLaterMovie/watchLaterMovieApi.types";
 
 //Auth reducer
 export const setLoginStatus = (status: boolean) => ({type: AuthActions.SET_LOGIN_STATUS, status})
@@ -8,12 +9,15 @@ export const setUserData = (email: string, username: string) => ({type: AuthActi
 export const clearUserData = (email: null, username: null) => ({type: AuthActions.CLEAR_USER_DATA, email, username})
 
 //FindMovie reducer
-export const setMovie = (data: AxiosResponse<responseMovie, responseMovie>) => ({type: FindMovieActions.SET_MOVIE, data})
-export const setMovieMore = (data: AxiosResponse<responseMovie, responseMovie>) => ({type: FindMovieActions.SET_MOVIE_MORE, data})
+export const setMovie = (movie: AxiosResponse<FindMovieApiTypes.requestMovie.Response, FindMovieApiTypes.requestMovie.Response>) => ({
+    type: FindMovieActions.SET_MOVIE,
+    movie
+})
+export const setMovieMore = (movie: AxiosResponse<FindMovieApiTypes.requestMovie.Response, FindMovieApiTypes.requestMovie.Response>) => ({type: FindMovieActions.SET_MOVIE_MORE, movie})
 export const setSearchBody = (body: string) => ({type: FindMovieActions.SET_SEARCH_BODY, body})
 
 //WatchLater reducer
-export const setMovieWatchLater = (movie: AxiosResponse<responseMovieWatchLater, responseMovieWatchLater>) => ({
+export const setMovieWatchLater = (movie: AxiosResponse<WatchLaterApiTypes.requestMovieLater.Response, WatchLaterApiTypes.requestMovieLater.Response>) => ({
     type: WatchLaterActions.SET_MOVIE_WATCH_LATER,
     movie
 })

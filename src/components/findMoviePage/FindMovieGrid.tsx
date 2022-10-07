@@ -19,8 +19,8 @@ const StyleFindMovieGrid = {
     }
 }
 
-const AddWatchLater = (id: string | number) => {
-    WatchLaterMovieAPI.addWatchLater(id).then()
+const AddWatchLater = (id: number) => {
+    WatchLaterMovieAPI.addWatchLater({id})
 }
 
 const FindMovieGrid: React.FC<FindmovieTypes.IMovieProps> = ({findMovie, requestMovieMore, movie, next, onChange, bodyInput}) => {

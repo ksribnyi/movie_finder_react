@@ -1,15 +1,15 @@
 import {AxiosResponse} from "axios";
 import api from "./InstanseHTTP_Auth";
-import {AuthResponseUser, RegistrationResponse, TokenResponse} from "../../models/response/Response";
+import {AuthApiTypes} from "./authApi.types";
 
 export const AuthAPI = {
-    login(email: string, password: string): Promise<AxiosResponse<AuthResponseUser, AuthResponseUser>> {
+    login({email, password} : AuthApiTypes.login.Request): Promise<AxiosResponse<AuthApiTypes.login.Response, AuthApiTypes.login.Response>> {
         return api.post("login/", {email: email, password: password})
     },
-    registration(email: string, password: string, username: string): Promise<AxiosResponse<RegistrationResponse, RegistrationResponse>> {
+    registration({email, password, username} : AuthApiTypes.registration.Request): Promise<AxiosResponse<AuthApiTypes.registration.Response, AuthApiTypes.registration.Response>> {
         return api.post("registration/", {email: email, password: password, username: username})
     },
-    getToken(username: string, password: string): Promise<AxiosResponse<TokenResponse, TokenResponse>> {
-        return api.post("api/token/", {email: username, password: password})
+    getToken({email, password} : AuthApiTypes.getToken.Request): Promise<AxiosResponse<AuthApiTypes.getToken.Response, AuthApiTypes.getToken.Response>> {
+        return api.post("api/token/", {email: email, password: password})
     }
 }
