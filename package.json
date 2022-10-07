@@ -20,6 +20,7 @@
     "@types/react-redux": "^7.1.24",
     "flat": "^5.0.2",
     "formik": "^2.2.9",
+    "material-ui-popup-state": "^1.9.3",
     "notistack": "^2.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

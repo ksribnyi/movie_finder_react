@@ -1,5 +1,6 @@
 export enum FindMovieActions {
     SET_MOVIE = "SET_MOVIE",
+    CLEAR_MOVIE = "CLEAR_MOVIE",
     SET_MOVIE_MORE = "SET_MOVIE_MORE",
     SET_SEARCH_BODY = "SET_SEARCH_BODY"
 }

@@ -1,7 +1,16 @@
 body {
-    background: gray;
+    overflow: auto;
+    -ms-overflow-style: none;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /*background-image:  url("./assets/image/bacgroundsPage.png") ;*/
+    background-image:  url("./assets/image/bg_test.png") ;
+    background-attachment: fixed;
     margin: 0;
-    width: 100vw;
+}
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 
 .app-wrapper {
@@ -9,13 +18,10 @@ body {
     padding: 0;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-
 }
 
 .app-wrapper-content {
     flex-grow: 3;
-    background: black;
 }
 
 input:-webkit-autofill {

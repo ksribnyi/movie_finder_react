@@ -11,27 +11,49 @@ import {findmoviePatch} from "../../utils/variables";
 const StyleRegistrationForm = {
     RegBlock: {
         width: 300,
-        height: 350,
+        height: 450,
         background: "gray",
         marginTop: 50,
         marginLeft: "auto",
-        marginRight: "auto"
+        marginRight: "auto",
+
     },
     formBlock: {
-        height: 280,
+        height: 400,
         margin: "auto",
         display: "flex",
         flexDirection: "column" as "column",
         alignItems: "center" as "center",
+        position: "relative" as "relative"
     },
     emailInput: {
-        marginTop: 20,
+        position: "absolute" as "absolute",
+        top: 10
+
+    },
+    usernameInput: {
+        position: "absolute" as "absolute",
+        top: 80
+
     },
     passInput: {
-        marginTop: 20
+        position: "absolute" as "absolute",
+        top: 150
+
+    },
+    passInputConfirm: {
+        position: "absolute" as "absolute",
+        top: 210
+
     },
     btnSubmit: {
-        marginTop: 40
+        position: "absolute" as "absolute",
+        top: 310
+
+    },
+    backLogin:{
+        position: "absolute" as "absolute",
+        top: 350
     },
     h1: {
         margin: "auto",
@@ -73,7 +95,7 @@ const RegistrationForm: React.FC = () => {
                             error={formik.touched.email && Boolean(formik.errors.email)}
                             helperText={formik.touched.email && formik.errors.email}/>
                     </div>
-                    <div style={StyleRegistrationForm.emailInput}>
+                    <div style={StyleRegistrationForm.usernameInput}>
                         <TextField
                             id="username"
                             type="username"
@@ -98,7 +120,7 @@ const RegistrationForm: React.FC = () => {
                             helperText={formik.touched.password && formik.errors.password}
                         />
                     </div>
-                    <div style={StyleRegistrationForm.passInput}>
+                    <div style={StyleRegistrationForm.passInputConfirm}>
                         <TextField
                             id="confirmPassword"
                             name="confirmPassword"
@@ -116,7 +138,7 @@ const RegistrationForm: React.FC = () => {
                             Submit
                         </Button>
                     </div>
-                    <div>
+                    <div style={StyleRegistrationForm.backLogin}>
                         <p onClick={() => navigate("/login")}>Login</p>
                     </div>
                 </div>

@@ -19,6 +19,11 @@ const FindMovieReducer = (state: ReducersTypes.IFindMovie = InitStates.FindMovie
                 previous: action.data.previous,
                 movie: [...state.movie, ...action.data.results]
             }
+        case FindMovieActions.CLEAR_MOVIE :
+            return {
+                ...state,
+                movie: action.movie
+            }
         case FindMovieActions.SET_SEARCH_BODY :
             return {
                 ...state,

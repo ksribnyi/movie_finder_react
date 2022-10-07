@@ -2,7 +2,6 @@ import React, {useEffect} from "react";
 import "./App.css";
 import FindMovieContainer from "./components/findMoviePage/FindMovieContainer";
 import HeaderContainer from "./components/HeaderPage/HeaderContainer";
-import LoginContainer from "./components/LoginPage/LoginContainer";
 import Registration from "./components/RegistrationPage/RegistrationForm"
 import {Navigate, Route, Routes} from "react-router";
 import {connect} from "react-redux";
@@ -11,6 +10,7 @@ import {findmoviePatch, registrationPatch} from "./utils/variables";
 import WatchLaterContainer from "./components/WatchLaterPage/WatchLaterContainer";
 import {checkAuth} from "./redux/Auth/loginThunk";
 import {AppTypes} from "./app.types";
+import LoginContainer from "./components/LoginPage/LoginContainer";
 
 const App = ({checkAuth}: AppTypes.IAppProps) => {
     const {enqueueSnackbar} = useSnackbar()
