@@ -5,6 +5,7 @@ import AddIcon from "@mui/icons-material/Add";
 import React from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 
+
 const StyleMoviePhoto = {
     Btn: {
         padding: 0,
@@ -12,7 +13,6 @@ const StyleMoviePhoto = {
         fontSize: 35
     }
 }
-
 
 const CheckPhoto = ({poster, linkImdb, buttonEffect, id, typeIcon}: FindmovieTypes.IMoviePhoto) => {
     if (poster) {

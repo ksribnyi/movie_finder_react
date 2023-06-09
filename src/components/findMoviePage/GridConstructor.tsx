@@ -1,6 +1,6 @@
 import {Grid} from "@mui/material";
 import React from "react";
-import "./FindMovie.css";
+import "./FindMovie.css"
 import {FindmovieTypes} from "./findmovie.types";
 import GridMovie from "./GridMovie";
 import InfiniteScroll from 'react-infinite-scroller';

@@ -31,6 +31,5 @@ const StateProps = (state: FindmovieTypes.IMovieContainer) => ({
     movie: state.movie,
 })
 
-    
-export default connect(StateProps, {requestMovie, requestMovieMore, clearMovie, setSearchBody})(FindMovieContainer)
 
+export default connect(StateProps, {requestMovie, requestMovieMore, clearMovie, setSearchBody})(FindMovieContainer)
