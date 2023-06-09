@@ -11,5 +11,8 @@ export const FindMovieAPI = {
     },
     unlikeMovie({id}: FindMovieApiTypes.unlikeMovie.Request) {
         return $apiFindMovie.post(`movie/${id}/unlike/`)
+    },
+    requestMovieMore(url: string): Promise<AxiosResponse<FindMovieApiTypes.requestMovie.Response, FindMovieApiTypes.requestMovie.Response>> {
+        return $apiFindMovie.get(url).then(response => response.data)
     }
 }

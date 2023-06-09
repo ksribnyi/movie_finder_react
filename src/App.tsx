@@ -13,6 +13,7 @@ import {AppTypes} from "./app.types";
 import LoginContainer from "./components/LoginPage/LoginContainer";
 import SettingsContainer from "./components/SettingsPage/SettingsContainer";
 
+
 const App = ({checkAuth}: AppTypes.IAppProps) => {
     const {enqueueSnackbar} = useSnackbar()
     useEffect(() => {

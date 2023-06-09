@@ -1,3 +1,7 @@
+# A web platform for the community of moviegoers, working in conjunction with the IMDB API.
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

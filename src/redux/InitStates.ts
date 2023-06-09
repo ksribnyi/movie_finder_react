@@ -7,7 +7,11 @@ export namespace InitStates {
         }
     }
     export const FindMovie = {
-        movie: [],
+        next: "",
+        previous: "",
+        movie: {
+            results: []
+        },
         bodyInput: ""
     }
     export const WatchLater = {

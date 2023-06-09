@@ -5,8 +5,12 @@ export namespace ReducersTypes {
         loginStatus: boolean
     }
     export interface IFindMovie {
-        movie?: Array<IMovieElement>,
-        bodyInput?: string,
+        next: string,
+        previous: string,
+        movie: {
+            results: Array<IMovieElement>
+        },
+        bodyInput: string
     }
     export interface IWatchLater {
         movieS: Array<IMovieElement>
