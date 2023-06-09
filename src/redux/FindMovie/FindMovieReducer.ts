@@ -8,16 +8,18 @@ const FindMovieReducer = (state: ReducersTypes.IFindMovie = InitStates.FindMovie
         case FindMovieActions.SET_MOVIE :
             return {
                 ...state,
-                next: action.data.next,
-                previous: action.data.previous,
-                movie: action.data.results
+                next: action.movie.next,
+                previous: action.movie.previous,
+                movie: action.movie
             }
         case FindMovieActions.SET_MOVIE_MORE :
             return {
                 ...state,
-                next: action.data.next,
-                previous: action.data.previous,
-                movie: [...state.movie, ...action.data.results]
+                next: action.movie.next,
+                previous: action.movie.previous,
+                movie: {
+                    results: [...state.movie.results, ...action.movie.results]
+                }
             }
         case FindMovieActions.CLEAR_MOVIE :
             return {

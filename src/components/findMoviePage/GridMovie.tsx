@@ -34,12 +34,12 @@ const generateLink = (imdb_id: string) => {
     return imdbLink + imdb_id + "/"
 }
 
-const GridMovie = ({buttonEffect, key, movieData, textBtn, id}: FindmovieTypes.IGridMovie) => {
+const GridMovie = ({buttonEffect, movieData, typeIcon, id}: FindmovieTypes.IGridMovie) => {
     return (
-        <Grid key={key} item>
+        <Grid item>
             <div style={StyleGridMovie.movieBox}>
                 <MoviePhoto poster={movieData.poster} linkImdb={generateLink(movieData.imdb_id)}
-                            buttonEffect={buttonEffect} id={id} textBtn={textBtn}/>
+                            buttonEffect={buttonEffect} id={id} typeIcon={typeIcon}/>
                 <div style={{height: 80, display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
                     <div style={StyleGridMovie.aboutMovie}>{
                         <a style={StyleGridMovie.link}

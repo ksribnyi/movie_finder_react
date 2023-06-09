@@ -7,7 +7,9 @@ export namespace ReducersTypes {
     export interface IFindMovie {
         next: string,
         previous: string,
-        movie: Array<IMovieElement>,
+        movie: {
+            results: Array<IMovieElement>
+        },
         bodyInput: string
     }
     export interface IWatchLater {

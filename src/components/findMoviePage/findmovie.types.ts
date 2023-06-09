@@ -1,4 +1,4 @@
-import React, {Dispatch, ReactElement, SetStateAction} from "react";
+import React, {Dispatch, SetStateAction} from "react";
 import {FindMovieApiTypes} from "../../api/FindMovie/findMovieApi.types";
 
 export namespace FindmovieTypes {
@@ -24,11 +24,10 @@ export namespace FindmovieTypes {
     }
 
     export interface IGridMovie {
-        key: number,
         id: number,
         movieData: movieData,
         buttonEffect: (id: number) => void,
-        textBtn: ReactElement<any, any>
+        typeIcon: string
     }
 
     export interface ILikeMovie {
@@ -47,7 +46,9 @@ export namespace FindmovieTypes {
 
     export interface IGridConstructor {
         movie: FindMovieApiTypes.requestMovie.Response,
-        buttonEffect: (id: number) => void
+        buttonEffect: (id: number) => void,
+        requestMovieMore: (name: string) => Promise<void>,
+        next: string
     }
 
     export interface IMoviePhoto {
@@ -55,7 +56,7 @@ export namespace FindmovieTypes {
         linkImdb: string,
         id: number,
         buttonEffect: (id: number) => void,
-        textBtn: ReactElement<any, any>
+        typeIcon: string
     }
 
     export interface movieData {
