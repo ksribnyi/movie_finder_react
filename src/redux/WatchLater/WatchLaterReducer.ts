@@ -1,14 +1,23 @@
 import {AnyAction} from "redux";
 import {WatchLaterActions} from "../ActionsType";
 import {InitStates} from "../InitStates";
-import {ReducersTypes} from "../reducers.types";
 
-const WatchLaterReducer = (state: ReducersTypes.IWatchLater = InitStates.WatchLater, action: AnyAction) => {
+
+const WatchLaterReducer = (state: {
+    movieLater: { next: string; previous: string; results: any[] }
+} = InitStates.WatchLater, action: AnyAction) => {
     switch (action.type) {
         case WatchLaterActions.SET_MOVIE_WATCH_LATER :
             return {
                 ...state,
-                movieS: action.movie
+                movieLater: action.movie
+            }
+        case WatchLaterActions.SET_MOVIE_LATER_MORE :
+            return {
+                ...state,
+                movieLater: {
+                    results: [...state.movieLater.results, ...action.movie]
+                }
             }
         default:
             return state

@@ -2,7 +2,7 @@ import {AnyAction, applyMiddleware, combineReducers, createStore, Store} from "r
 import thunkMiddleware, {ThunkDispatch} from "redux-thunk";
 import WatchLaterReducer from "./WatchLater/WatchLaterReducer";
 import AuthReducer from "./Auth/AuthReducer";
-import FindMovieReducer from "./FindMovie/FindMovieReducer";
+import FindMovieReducer from "./Movie/FindMovieReducer";
 
 export type TAppState = ReturnType<typeof reducers>;
 export type TDispatch = ThunkDispatch<TAppState, Promise<void>, AnyAction>;

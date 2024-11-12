@@ -3,7 +3,8 @@ import { IMovieElement } from "../FindMovie/findMovieApi.types";
 export namespace WatchLaterApiTypes {
     export namespace requestMovieLater {
         export interface Response {
-            count: number,
+            next?: string;
+            count?: number,
             results: [
                 {
                     id: number,

@@ -1,5 +1,5 @@
 import axios from "axios";
-import {API_URL, tokenKey} from "../../utils/variables";
+import {API_URL, tokenKey} from "../../constants/constants";
 
 export const $apiFindMovie = axios.create({
     withCredentials: true,

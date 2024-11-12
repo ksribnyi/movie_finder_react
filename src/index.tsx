@@ -15,7 +15,10 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <Provider store={store}>
-                <SnackbarProvider autoHideDuration={3000} preventDuplicate variant={"error"} >
+                <SnackbarProvider autoHideDuration={3000} preventDuplicate variant={"error"} anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                }}>
                     <App/>
                 </SnackbarProvider>
             </Provider>

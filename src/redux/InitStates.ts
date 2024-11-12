@@ -4,9 +4,11 @@ export namespace InitStates {
         userData: {
             email: null,
             username: null
-        }
+        },
+        showLoginModal: false
     }
-    export const FindMovie = {
+
+    export const Movie = {
         next: "",
         previous: "",
         movie: {
@@ -14,7 +16,12 @@ export namespace InitStates {
         },
         bodyInput: ""
     }
+
     export const WatchLater = {
-        movieS: [],
+        movieLater: {
+            next: "",
+            previous: "",
+            results: []
+        }
     }
 }

@@ -1,5 +1,5 @@
 import axios from "axios";
-import {API_URL, loginPatch, refreshTokenPatch, tokenKey} from "../../utils/variables";
+import {API_URL, loginPatch, refreshTokenPatch, tokenKey} from "../../constants/constants";
 import {setLoginStatus} from "../../redux/ActionsCreators";
 
 const $apiUser = axios.create({

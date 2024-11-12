@@ -1,0 +1,56 @@
+.header_wrapper {
+  height: 80px;
+  width: 100%;
+  margin: 0;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 4;
+
+  .logo_wrapper {
+    max-width: 290px;
+    width: 100%;
+
+    a {
+      display: inline-block;
+      margin: auto;
+
+      .logo {
+        height: 70px;
+
+      }
+    }
+
+  }
+
+  .control {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    margin: 16px 8px;
+
+    input {
+      padding: 7px 10px;
+      width: 450px;
+      cursor: pointer;
+
+    }
+    button {
+
+    }
+
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    column-gap: 32px ;
+    margin-right: 16px;
+    width: 270px;
+
+  }
+}

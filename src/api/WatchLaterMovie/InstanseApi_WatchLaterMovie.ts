@@ -1,5 +1,5 @@
 import axios from "axios";
-import {API_URL, tokenKey} from "../../utils/variables";
+import {API_URL, tokenKey} from "../../constants/constants";
 
 export const $apiWatchLaterMovie = axios.create({
     withCredentials: true,
@@ -12,6 +12,7 @@ $apiWatchLaterMovie.interceptors.request.use((config) => {
     if (typeof value === "string") {
         token = JSON.parse(value)
     }
+
     config.headers!.Authorization = `Bearer ${token.access}`
     return config
 })

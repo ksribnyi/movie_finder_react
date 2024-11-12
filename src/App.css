@@ -1,13 +1,8 @@
 body {
-    overflow: auto;
-    -ms-overflow-style: none;
-    background-size: cover;
-    background-repeat: no-repeat;
-    /*background-image:  url("./assets/image/bacgroundsPage.png") ;*/
-    background-image:  url("./assets/image/bg_test.png") ;
-    background-attachment: fixed;
     margin: 0;
+    background-color: white;
 }
+
 ::-webkit-scrollbar {
     width: 0;
     height: 0;
@@ -18,9 +13,11 @@ body {
     padding: 0;
     display: flex;
     flex-direction: column;
+
 }
 
 .app-wrapper-content {
+    margin-top: 80px;
     flex-grow: 3;
 }
 

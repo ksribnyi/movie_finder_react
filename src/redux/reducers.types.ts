@@ -1,9 +1,11 @@
-import { IMovieElement } from "../api/FindMovie/findMovieApi.types";
+import {IMovieElement} from "../api/FindMovie/findMovieApi.types";
 
 export namespace ReducersTypes {
     export interface IAuth {
-        loginStatus: boolean
+        loginStatus: boolean,
+        showLoginModal: boolean
     }
+
     export interface IFindMovie {
         next: string,
         previous: string,
@@ -12,7 +14,13 @@ export namespace ReducersTypes {
         },
         bodyInput: string
     }
+
     export interface IWatchLater {
-        movieS: Array<IMovieElement>
+        movieLater: {
+            next: string,
+            count: number,
+            previous: string,
+            results: Array<IMovieElement>
+        }
     }
 }

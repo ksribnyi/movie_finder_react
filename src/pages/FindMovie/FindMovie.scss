@@ -1,0 +1,24 @@
+
+.grid_movie {
+  margin: auto auto 32px !important;
+  overflow: auto;
+  height: calc(100% - 112px);
+}
+
+@media screen and (min-width: 0px) {
+  .grid_movie {
+    max-width: 300px;
+  }
+}
+
+@media screen and (min-width: 630px) {
+  .grid_movie {
+    max-width: 610px;
+  }
+}
+
+@media screen and (min-width: 1240px) {
+  .grid_movie {
+    max-width: 1200px;
+  }
+}

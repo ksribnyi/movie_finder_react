@@ -24,7 +24,6 @@ export namespace FindMovieApiTypes {
 }
 
 export interface IMovieElement {
-    movie: {
         id: number,
         likes_count: number,
         is_liked: boolean,
@@ -36,5 +35,4 @@ export interface IMovieElement {
         poster: string,
         created_at: string,
         updated_at: string
-    }
 }

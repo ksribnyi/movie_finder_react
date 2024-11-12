@@ -26,6 +26,11 @@ const AuthReducer = (state: ReducersTypes.IAuth = InitStates.Auth, action: AnyAc
                     username: action.username
                 },
             }
+        case AuthActions.SET_SHOW_LOGIN_MODAL:
+            return {
+                ...state,
+                showLoginModal: action.status
+            }
         default:
             return state
     }

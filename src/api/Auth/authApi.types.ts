@@ -14,8 +14,7 @@ export namespace AuthApiTypes {
     export namespace registration {
         export interface Request {
             email: string, 
-            password: string, 
-            username: string
+            password: string,
         }
         export interface Response {
             email: string,

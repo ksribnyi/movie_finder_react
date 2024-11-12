@@ -1,0 +1,30 @@
+
+.menu {
+  margin-left: -16px !important;
+  width: 150px;
+}
+
+.icon {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 16px;
+
+  img {
+    height: 32px;
+    width: 32px;
+
+  }
+}
+
+.link {
+
+  text-decoration: none;
+  color: black;
+
+  .divider {
+    margin-left: -16px;
+  }
+
+}
