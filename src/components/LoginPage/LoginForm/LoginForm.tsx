@@ -39,7 +39,7 @@ const StyleLoginForm = {
     }
 }
 
-const LoginForm = ({login, setShowLoginModal}:LoginTypes.ILoginForm) => {
+const LoginForm = ({login, setShowLoginModal, bodyInput, requestMovie}: LoginTypes.ILoginForm) => {
     const navigate = useNavigate()
     const {enqueueSnackbar} = useSnackbar()
     const formik = useFormik(
@@ -47,7 +47,12 @@ const LoginForm = ({login, setShowLoginModal}:LoginTypes.ILoginForm) => {
             initialValues: {email: "", password: ""},
             validationSchema: loginSchema,
             onSubmit: async (values) => {
-                await login(values.email, values.password, navigate, enqueueSnackbar).then(() => setShowLoginModal(false))
+                await login(values.email, values.password, navigate, enqueueSnackbar).then(() => {
+                    let value = bodyInput
+                    setShowLoginModal(false)
+                    window.location.reload()
+                    requestMovie(value)
+                })
                     .catch((e: LoginTypes.enqueueMassage) => enqueueSnackbar(e.response.data.detail))
             }
         }

@@ -7,10 +7,10 @@ export const FindMovieAPI = {
         return $apiFindMovie.get(`find_movie/${name}/`).then(response => response.data)
     },
     likeMovie({id}: FindMovieApiTypes.likeMovie.Request) {
-        return $apiFindMovie.post(`movie/${id}/like/`)
+        return $apiFindMovie.post(`movies/${id}/like/`)
     },
     unlikeMovie({id}: FindMovieApiTypes.unlikeMovie.Request) {
-        return $apiFindMovie.post(`movie/${id}/unlike/`)
+        return $apiFindMovie.post(`movies/${id}/unlike/`)
     },
     requestMovieMore(url: string): Promise<AxiosResponse<FindMovieApiTypes.requestMovie.Response, FindMovieApiTypes.requestMovie.Response>> {
         return $apiFindMovie.get(url).then(response => response.data)

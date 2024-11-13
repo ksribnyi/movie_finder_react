@@ -1,5 +1,5 @@
 import {Grid} from "@mui/material";
-import React from "react";
+import React, {useEffect} from "react";
 import "../../pages/FindMovie/FindMovie.scss";
 import {FindmovieTypes} from "../../types/findMovie.types";
 import LikesCounter from "../LikesCounter/LikesCounter";
@@ -18,7 +18,8 @@ const MovieItem = ({buttonEffect, movieData, isWatchLater, id, setShowLoginModal
         <Grid item>
             <div className={"movie_wrapper"}>
                 <Poster poster={movieData.poster} linkImdb={generateLink(movieData.imdb_id)}
-                        buttonEffect={buttonEffect} id={id} isWatchLater={isWatchLater} setShowLoginModal={setShowLoginModal}/>
+                        buttonEffect={buttonEffect} id={id} isWatchLater={isWatchLater}
+                        setShowLoginModal={setShowLoginModal}/>
                 <div className={"movie_info"}>
                     <div className={"movie_info_title"}>{
                         <a className={"link"}
@@ -38,7 +39,6 @@ const MovieItem = ({buttonEffect, movieData, isWatchLater, id, setShowLoginModal
         </Grid>
     )
 }
-
 
 
 export default connect(null, {setShowLoginModal})(MovieItem)

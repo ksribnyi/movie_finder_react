@@ -8,9 +8,11 @@ import {Sheet} from "@mui/joy";
 import {useNavigate} from "react-router";
 import {findmoviePatch} from "../../constants/constants";
 import {setShowLoginModal} from "../../redux/ActionsCreators";
+import {requestMovie} from "../../redux/Movie/findMovieThunk";
+import {HeaderTypes} from "../../types/header.types";
 
 
-const LoginContainer = ({login, setShowLoginModal}: LoginTypes.ILoginContainer) => {
+const LoginContainer = ({login, setShowLoginModal, bodyInput, requestMovie}: LoginTypes.ILoginContainer) => {
     const navigate = useNavigate()
 
     const handleCloseModal = () => {
@@ -29,12 +31,15 @@ const LoginContainer = ({login, setShowLoginModal}: LoginTypes.ILoginContainer) 
                 variant="outlined"
                 sx={{width: 300, borderRadius: 'md', p: 3, boxShadow: 'lg'}}
             >
-                <LoginForm login={login} setShowLoginModal={setShowLoginModal}/>
+                <LoginForm login={login} setShowLoginModal={setShowLoginModal} bodyInput={bodyInput} requestMovie={requestMovie}/>
             </Sheet>
 
         </Modal>
     )
 }
 
+const StateProps = (state: LoginTypes.IStateProps) => ({
+    bodyInput: state.movie.bodyInput
+})
 
-export default connect( null,{login, setShowLoginModal})(LoginContainer);
+export default connect(StateProps, {login, setShowLoginModal, requestMovie})(LoginContainer);

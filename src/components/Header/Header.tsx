@@ -31,7 +31,7 @@ const NavBar = ({
 
     const findMovie = async () => {
         await requestMovie(movie.bodyInput)
-        dispatch(setSearchBody(""))
+        // dispatch(setSearchBody(""))
     }
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {

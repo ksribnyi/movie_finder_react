@@ -10,6 +10,6 @@ export const AuthAPI = {
         return api.post("signup/", {email: email, password: password})
     },
     getToken({email, password} : AuthApiTypes.getToken.Request): Promise<AxiosResponse<AuthApiTypes.getToken.Response, AuthApiTypes.getToken.Response>> {
-        return api.post("api/token/", {email: email, password: password})
+        return api.post("token/", {email: email, password: password})
     }
 }

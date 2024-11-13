@@ -36,10 +36,11 @@ const RegistrationForm: React.FC = () => {
     const formik = useFormik(
         {
             initialValues: {email: "", password: "", confirmPassword: ""},
-            validationSchema: registrationSchema,
+            // validationSchema: registrationSchema,
             onSubmit: (values, actions) => {
                 AuthAPI.registration(values)
-                    .then(() => {navigate(findmoviePatch)})
+                    .then(() => {
+                        navigate(findmoviePatch)})
                     .catch((e) => {
                     const keys = Object.keys(e.response.data)
                     enqueueSnackbar(e.response.data[keys[0]])});

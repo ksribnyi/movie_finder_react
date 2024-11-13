@@ -18,6 +18,9 @@ export namespace FindmovieTypes {
         setSearchBody: (body: string) => { type: string, body: string }
         requestMovieMore: (name: string) => Promise<void>,
         clearMovie: (data: any) => any,
+        auth: {
+            loginStatus: boolean
+        }
     }
 
     export interface IGridMovie {
